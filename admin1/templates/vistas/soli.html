@@ -1,0 +1,73 @@
+{% extends "layout/layout.html" %}
+
+{% block tituloventana %} {{tituloventana}} {% endblock  %}
+{% block titulo %}Solicitud{% endblock  %}
+{% block content %}
+<div class="modal_principal">
+<div class="modal fade " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Crear</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="row g-3">
+                <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+                </div>
+                <div class="col-md-4">
+                <label for="validationDefault02" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+                </div>
+                <div class="col-md-4">
+                <label for="validationDefaultUsername" class="form-label">Ficha</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="inputGroupPrepend2">Correo Respuesta</span>
+                    <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <label for="validationDefault03" class="form-label">Municipio</label>
+                <input type="text" class="form-control" id="validationDefault03" required>
+                </div>
+                <div class="col-md-3">
+                <label for="validationDefault05" class="form-label">Identificacion</label>
+                <input type="text" class="form-control" id="validationDefault05" required>
+                </div>
+                <div class="col-12">
+                </div>
+                <div class="col-12">
+                <button class="btn btn-primary" type="submit">Aceptar</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Sig.</button>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="modal_principal">
+<div class="modal fade modal_principal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Verificacion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Hide this modal and show the first with the button below.
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Crear</a>
+
+{% endblock %}
