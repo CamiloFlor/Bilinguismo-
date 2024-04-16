@@ -1,0 +1,191 @@
+root {
+    --color-principal: #ffffff;
+    --color-segundario: #39A900;
+    --color-background: #f2f7f9;
+    --color-trasnparent: transparent;
+    --color-icon: #B5B6B7;
+    --color-titles: #222222;
+    --color-subtitle: #888;
+    --color-text: #555;
+    --color-border-reviews: #E5E6E7;
+    --color-company: #A5A6A7;
+    --color-background-certificate: #f5f5f5;
+    --color-background-contacto: #fcfcfc;
+}
+
+/*Estilos Generales*/
+/*estilos generales*/
+html {
+    font-size: 10px;/*Esto se utiliza para establecer una base de tamaño de fuente en la página*/
+
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "poppins", Helvetica, sans-serif;
+    font-size: 1.5rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-titles);
+
+}
+
+body {
+    background-image: url("../img/fondo.png");
+    /*imagen de fondo*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -20px -120px;
+}
+/*estructura principal*/
+.layout {
+    position: relative;
+    min-width: 1290px;
+    width: 75%;
+    height: 80vh;
+    min-height: 80vh;
+    margin: 2vh auto;
+    display: grid;
+    grid-template-areas: "aside content";
+    grid-template-columns: 20% 80%;
+    border-radius: 4rem;
+    box-shadow: 0 0 100px -5px rgba(0, 0, 0, 0.25);
+}
+.layout__aside {
+    grid-area: aside;
+
+    border-radius: 4rem 0 0 4rem;
+    overflow: auto;
+    overflow-x: hidden;
+    /*movimineto barra navegacion*/
+
+}
+.aside__user-info {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    min-height: 100%;
+    min-width: 30rem;
+
+    background-color: #39A900;
+    color: var(--color-principal);
+} 
+
+
+
+
+
+
+
+.user-info__footer{
+    position: absolute;
+    bottom: 2rem;
+    font-size: 1.2rem;
+    position: center;
+         
+}
+.layout__content {
+    grid-area: content;
+    height: 100%;
+    min-height: 100%;
+    background-color: var(--color-segundario);
+    border-radius: 0 10rem 10rem 0 ;
+}
+.content__page{
+    min-height: 100%;
+    background-color: var(--color-principal);
+    border-radius: 3.2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page__name{
+    font-size: 6rem;
+    margin-bottom: 1rem;
+}
+.page__job{
+    font-size: 2.1rem;
+    font-weight: lighter;
+    color: var(--color-subtitle);
+
+}
+
+
+/*Estilos barra de navegacion*/
+.navbar {
+    background-color: #39A900;
+}
+
+/*Estilos barra de navegacion*/
+nav{
+    width: 1250px;
+    height: 40px;
+    background-color: var(--color-segundario);
+    border: 1px solid #333333;
+    margin: 0 auto;
+    box-shadow: 0px 22px 22px gray;
+    font-size: 15px;
+    margin-bottom: 45px;
+    border-radius: 2rem;
+    }
+
+nav ul{
+    list-style: none;
+    text-decoration: 40px;
+    }
+nav ul li{
+    line-height: 40px;
+    float: right;
+    }
+/*enlaces*/
+nav ul li a{
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #d1d4d6;
+    border-radius: 2rem;
+}
+
+nav ul li a:hover{
+    background: #2ba977;
+    box-shadow: 0px 0px 5px #444444 inset;
+    color: white;
+    transition: all 300ms;
+    border-radius: 2rem;
+}
+
+/*Estilos para el footer*/
+footer{
+    width: 1250px;
+    background-color: #39A900;
+    border: 1px solid #333333;
+    color: #d1d4d6;
+    text-align: center;
+    padding-top: 10px;
+    margin: 0 auto;
+    box-shadow: 0px 22px 22px gray;
+    margin-bottom: 45px;
+    padding-bottom: 20px;
+    border-radius: 2rem;
+    
+
+
+    
+}

@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/poppins/poppins.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- CSS de Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- JavaScript de Bootstrap (jQuery debe incluirse primero) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
+    <title>{% block tituloventana %}
+        {% endblock %}
+        -Sena-Bilinguismo</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-red shadow-lg">
+        <div class="container">
+
+            <a href="https://oferta.senasofiaplus.edu.co/sofia-oferta/" class="navbar-brand text-white" style="font-size: 3rem;">SENA<span class="text-danger" >Bilinguismo</span></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a  class="nav-link click-scroll" style="font-size: 2rem;" href="{% url 'inicio_usuarios' %}"><small class="small-title"><strong class="text-white">01</strong></small> Inicio</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        {% if request.userprofile.id_rol == 1%}
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" style="font-size: 2rem;" href="{% url 'aprendiz:crearsoli_aprendiz' %}"><small class="small-title"><strong class="text-white">02</strong></small> Solicitudes</a>
+                            </li>
+                        {% endif %}
+                        {% if request.userprofile.id_rol == 2 %}
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" style="font-size: 2rem;" href="{% url 'instructor:crearsoli_instructor' %}"><small class="small-title"><strong class="text-white">02</strong></small> Solicitudes</a>
+                            </li>
+                        {% endif %}
+                        {% if request.userprofile.id_rol == 3%}
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" style="font-size: 2rem;" href="{% url 'coordinacion:crearsoli_coordinacion' %}"><small class="small-title"><strong class="text-white">02</strong></small> Solicitudes</a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <a class="nav-link click-scroll" style="font-size: 2rem;" href="{% url 'usuarios:crearsoli_usuario' %}"><small class="small-title"><strong class="text-white">02</strong></small> Solicitudes</a>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" style="font-size: 2rem;" href=""><small class="small-title"><strong class="text-white">03</strong></small> Noticias</a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                    
+                    <li class="menu__option">
+                        <a href="instructor.html" class="menu__link">
+                            <i class="menu__icon fa-solid fa-graduation-cap"></i>
+                            <span class="menu__overlay"> Instructores</span>
+                        </a>
+                    </li>
+                    <li class="menu__option">
+                        <a href="miperfil.html" class="menu__link">
+                            <i class="menu__icon fa-solid fa-gear"></i>
+                            <span class="menu__overlay">Perfil</span>
+                        </a>
+                    </li>
+                    <li class="menu__option">
+                        <a href="{% url 'usuarios:logout' %}" class="menu__link">
+                            <i class="menu__icon fa-solid fa-gear"></i>
+                            <span class="menu__overlay">Cerrar sesión</span>
+                        </a>
+                    </li>
+                {% else %}
+                <li class="menu__option">
+                    <a href="{% url 'usuarios:login_user' %}" class="menu__link">
+                        <i class="menu__icon fa-solid fa-gear"></i>
+                        <span class="menu__overlay"> Iniciar sesion</span>
+                    </a>
+                </li>
+            {% endif %}
+
+                </ul>
+            <div>
+                    
+        </div>
+    </nav>
+
+    <!--layout principal-->
+    <div class="layout">
+        <!--barra lateral -->
+        <aside class="layout__aside">
+            <!--informacion general del usuario-->
+            <aside class="aside__user-info">
+            <section class="layout__aside">
+            </section><!--informacion general del usuario-->
+            </aside>
+        </aside>
+        <!--contenido principal-->
+        <main class="layout__content">
+            <section class="content__page">
+                {% block content %} {% endblock %}
+                
+            </section>
+        </main>
+    </div>
+    <footer>
+            <div style="font-size: 2rem;" class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-3 col-5">
+                        <p class="text-white mb-0">
+                            <a href="tel: 01800910270" class="text-white">
+                                <i class="bi-telephone site-header-icon me-2"></i>
+                                3430111
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-5 col-7">
+                        <p class="text-white mb-0">
+                            <i class="bi-clock site-header-icon me-2"></i>
+                        Horario de atencion: Lunes a Viernes 7:00am a 7:00pm - Sábados 8:00am a 1:00pm 
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-12 ms-auto">
+                        <ul class="social-icon">
+                            <li><a href="https://www.facebook.com/SENA/" class="social-icon-link bi-facebook">-Facebook</a></li>
+                            <li><a href="https://www.instagram.com/senacomunica/" class="social-icon-link bi-instagram">-Istagram</a></li>
+                            <li><a href="https://twitter.com/SENAComunica?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Escreen-name%3ASENAComunica%7Ctwcon%5Es1_c1" class="social-icon-link bi-twitter">-Twitter</a></li>
+                            <li><a href="https://www.youtube.com/user/SENATV" class="social-icon-link bi-youtube">-YouTube</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        
+        <p>Programación con Django - ADSO 2024 &copy; B-TEAM ADSO - Todos los derechos reservados  {% now "d/m/Y h:m:s"%}</p>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
