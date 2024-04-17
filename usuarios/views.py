@@ -4,7 +4,7 @@ from usuarios.forms import RegisterForm, UserProfileForm, DetalleSolicitudForm, 
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from usuarios.models import Rol, UserProfile, Detallesolicitud, Tipodocumento
+from usuarios.models import Rol, UserProfile, Detallesolicitud, Tipodocumento, Municipio, TipoSolicitud
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -77,7 +77,6 @@ def usuario(request, numeroiden, correo):
         'usuario' : usuario
     })
 def crearsoli_usuario(request):
-    detallesolicitud= Detallesolicitud.objects.all()
     if request.method == 'POST':
         register_form = RegisterForm(request.POST)
         userprofile_form = UserProfileForm(request.POST)
@@ -90,10 +89,15 @@ def crearsoli_usuario(request):
     else:
         form_detallesolicitud = DetalleSolicitudForm()
         register_form = RegisterForm()
+    municipio = Municipio.objects.all()
+    detallesolicitud= Detallesolicitud.objects.all()
+    tiposoli = TipoSolicitud.objects.all()
     tipodoc = Tipodocumento.objects.all()
     return render(request, 'vistas/soli_usuarios.html', {'form_detallesolicitud': form_detallesolicitud, 'detallesolicitud': detallesolicitud,
         'register_form': register_form,
-        'tipodoc': tipodoc
+        'tipodoc': tipodoc,
+        'municipio': municipio,
+        'tiposoli': tiposoli
         })
 
 def eliminartiposoli_usuario(request, id_detallesolicitud):
