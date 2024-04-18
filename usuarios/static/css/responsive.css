@@ -1,0 +1,139 @@
+@media (max-width: 1326px){
+    body {
+        padding :0;
+    }
+    .layout {
+        min-width:auto;
+        width:85%;
+    }
+}
+@media (max-width: 1220px){
+    layaut {
+        width:89%;
+        margin-left:3rem;
+    }
+}
+@media (max-width: 1180px){
+    .layout {
+        width:85%;
+        margin-left:4rem;
+    }
+    .certificates__certificate{
+        flex-basis: 100%;
+    }
+}
+@media (max-width:1070px) {
+    body{
+        background-image:none;
+        position:static;
+        
+    }
+    .layaut{
+        width:100%;
+        height:100%;
+        margin:0;
+        border-radius:0;
+        grid-template-areas:'content';
+        grid-template-columns:100%;
+    }
+    .layaut__aside{
+        display:none;
+    }
+    .layaut__content{
+    border-radius:0;
+    background-color:transparent;
+    height:100%;
+}
+    .content__page{
+        border-radius:0;
+        height:10vh;
+    }
+    .layaut__menu{
+        position:static;
+    }
+}
+@media (max-width: 800px){
+    .resume__container {
+        flex-direction:column;
+    }
+    .reviews__review{
+        margin-top:6rem;
+        flex-basis:100%;
+    }
+    .clients__container{
+        flex-wrap:wrap;
+        justify-content:space-around;
+    }
+    .prices__container{
+        flex-direction:column;
+    }
+    .prices__box{
+        flex-basis:100%;
+        margin:0;
+    }
+    .prices__box:last-child{
+        margin-top:2rem;
+    }
+    .gallery_item{
+        flex-basis:50%;
+    }
+    .articles__article{
+        flex-basis:100%;
+    }
+}    
+@media (max-width:600px)  {
+    .about__personal-info{
+        flex-direction:column;
+    }
+    .personal-info__data{
+        flex-basis:100%;
+        padding:0;
+        margin-top:2rem;
+    }
+    .services__container{
+        flex-direction:column;
+        flex-wrap:wrap;
+    }
+    .sercice__service{
+        flex-basis:100%;
+        margin-right:0;
+        margin-bottom:3rem;
+    }
+
+
+
+
+    .extra__container{
+        flex-direction:column;
+        gap:2rem;
+    }
+    .contact__container{
+        flex-direction:column;
+    }
+}  
+@media (max-width:480px){
+    .page__name{
+        font-size:3.5rem;
+        line-height:4.2rem;
+        text-align:center;
+    }
+    .certificate__logo{
+        width:100%;
+    }
+    .gallery__item{
+        flex-basis:100%;
+    }
+    .form__container{
+        display:flex;
+        flex-direction:column;
+    }
+    .form__left{
+        flex-basis:100%;
+        margin-right:0;
+    }
+    .form__right{
+        flex-basis:100%;
+        max-width:100%;
+        max-height:100%;
+    }
+}

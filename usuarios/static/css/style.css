@@ -20,6 +20,49 @@ html {
 
 }
 
+/* CAMBIO HEADER */
+.texto-esquina {
+    position: absolute;
+    top: 10px; /* distancia desde la parte superior */
+    left: 50px; /* ajusta la posición a la derecha */
+    font-size: 50px; /* tamaño de la fuente */
+    font-family: Arial, sans-serif; /* fuente del texto */
+    color: green; /* color del texto */
+}
+
+.linea-verde {
+    margin-bottom: 60px; /* Ajusta este valor según la cantidad de espacio adicional que desees */
+    border: none;
+    height: 6px; /* altura de la línea */
+    background-color: #39A200; /* color verde */
+    width: calc(100% - 30px); /* Ajusta el ancho para dejar un espacio de 10px a cada lado */
+    position: absolute;
+    top: 90px; /* Mueve la línea 50px desde la parte superior */
+    left: 10px; /* Asegura que la línea comience desde el mismo punto que el texto */
+}
+.user-info__image {
+    width: 25%;
+    background-color: var(--color-principal);
+    border: 3px solid var(--color-principal);
+    border-radius: 20rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.user-info__image {
+    width: 25%; /* Reducción del tamaño de la imagen */
+    background-color: var(--color-principal);
+    border: 3px solid var(--color-principal);
+    border-radius: 20rem 0 0 20rem;
+    position: absolute; /* Cambiado a absolute */
+    top: 10px;
+    right: 10px; /* Ajustado para la posición superior derecha */
+    z-index: 1; /* Agregado para asegurar que la imagen esté por encima del contenido */
+}
+
+
+
 body {
     width: 100%;
     height: 100%;
@@ -29,6 +72,11 @@ body {
     color: var(--color-text);
 
     overflow: hidden;
+
+    background-image: url("bili/admin1/static/img/fondo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -20px -120px;
 }
 
 h1,
@@ -48,35 +96,41 @@ body {
     background-repeat: no-repeat;
     background-position: -20px -120px;
 }
+
+.fondo-imagen {
+    background-image: url("{% static 'img/fondo.png'%}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Otros estilos según sea necesario */
+}
 /*estructura principal*/
 .layout {
     position: relative;
     min-width: 1290px;
-    width: 75%;
+    width: 90%;
     height: 80vh;
     min-height: 80vh;
-    margin: 2vh auto;
+    margin: 10vh auto 2vh; /* Ajuste del margen superior para dar más espacio debajo del header */
     display: grid;
     grid-template-areas: "aside content";
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 10% 90%;
     border-radius: 4rem;
     box-shadow: 0 0 100px -5px rgba(0, 0, 0, 0.25);
 }
+
 .layout__aside {
     grid-area: aside;
-
     border-radius: 4rem 0 0 4rem;
     overflow: auto;
     overflow-x: hidden;
-    /*movimineto barra navegacion*/
-
+    /* Otras propiedades si las hay */
 }
 .aside__user-info {
     
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    
 
     min-height: 100%;
     min-width: 30rem;
@@ -103,7 +157,8 @@ body {
     height: 100%;
     min-height: 100%;
     background-color: var(--color-segundario);
-    border-radius: 0 10rem 10rem 0 ;
+    border-radius: 0 10rem 10rem 0;
+    overflow-y: auto; /* Agrega desplazamiento vertical */
 }
 .content__page{
     min-height: 100%;
@@ -135,41 +190,82 @@ body {
 
 /*Estilos barra de navegacion*/
 nav{
-    width: 1250px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background-color: #39A900;
+    border-radius: 4rem 0 0 4rem;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1) 
+     ;
+  }
+  .logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+  
+  }
+  .logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  
+  }
+  .logo span{
+    font-weight: bold;
+    padding-left : 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  a{
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table; 
+    width: 300px;
+    padding: 10px;
+  
+  }
+  .fas{
+    position: relative;
+    width: 70px;
     height: 40px;
-    background-color: var(--color-segundario);
-    border: 1px solid #333333;
-    margin: 0 auto;
-    box-shadow: 0px 22px 22px gray;
-    font-size: 15px;
-    margin-bottom: 45px;
-    border-radius: 2rem;
-    }
-
-nav ul{
-    list-style: none;
-    text-decoration: 40px;
-    }
-nav ul li{
-    line-height: 40px;
-    float: right;
-    }
-/*enlaces*/
-nav ul li a{
-    display: block;
-    padding-left: 15px;
-    padding-right: 15px;
-    color: #d1d4d6;
-    border-radius: 2rem;
-}
-
-nav ul li a:hover{
-    background: #2ba977;
-    box-shadow: 0px 0px 5px #444444 inset;
-    color: white;
-    transition: all 300ms;
-    border-radius: 2rem;
-}
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  
+  }
+  .nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
+  a:hover{
+    background: #eee;
+  
+  }
+  nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+  }
+  .logout{
+    position: absolute;
+    bottom: 0;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 /*Estilos para el footer*/
 footer{
@@ -188,4 +284,17 @@ footer{
 
 
     
+}
+/* Estilos adicionales para la sección de noticias */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
 }
