@@ -1,0 +1,30 @@
+.custom-header {
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 18px;
+    /* Otros estilos personalizados */
+}
+
+.custom-body {
+    padding: 20px;
+    /* Otros estilos personalizados */
+}
+
+.custom-title {
+    color: #007bff;
+    /* Otros estilos personalizados */
+}
+
+.custom-footer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    /* Otros estilos personalizados */
+}
+
+
+.article__title{
+    font-size: 1.8rem;
+    margin-top:0.5rem;
+}
+
+

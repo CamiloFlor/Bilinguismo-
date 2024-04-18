@@ -1,0 +1,17 @@
+{% extends "layout/layout.html" %}
+
+{% block tituloventana %} {{tituloventana}} {% endblock  %}
+{% block titulo %}Agregar{% endblock  %}
+{% block content %}
+
+<div class="card" style="width: 60%; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px;">
+    <div class="card-header" style="background-color: #f0f0f0; color: #333; font-size: 16px; border-bottom: 1px solid #ccc; padding: 10px; text-align: center;">Editar Noticias</div>
+    <div class="card-body" style="padding: 20px; text-align: center;">
+        <h4 class="card-title" style="color: #007bff;">Datos</h4>
+        {% include 'vistas/noti/form.html' %}
+    </div>
+    <div class="card-footer text-muted" style="background-color: #f0f0f0; padding: 10px; border-top: 1px solid #ccc; text-align: center;"></div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "layout/layout.html" %}
+
+{% block tituloventana %} {{tituloventana}} {% endblock  %}
+{% block titulo %}Solicitud{% endblock  %}
+{% block content %}
+<div class="container">
+  <h2>Mis SolicitudES</h2>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <!-- Agrega más columnas según sea necesario -->
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Crear</a>
+          {% for tiposolicitud in detallesolicitud %}
+          <tr>
+              <td>{{ tiposolicitud.id_detallesolicitud }}</td>
+              <td>{{ tiposolicitud.nombre }}</td>
+              <td>{{ tiposolicitud.descripcion }}</td>
+              <!-- Agrega más celdas según sea necesario -->
+              <td>
+                  
+                  <a href="" class="btn btn-warning btn-sm">Editar</a>
+                  <a href="{% url 'aprendiz:eliminar_tiposolicitud' tiposolicitud.id_detallesolicitud %}" class="btn btn-danger btn-sm">Eliminar</a>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+
+
+<div class="modal_principal">
+  <div class="modal fade " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">Verificacion</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <!-- Dentro del modal-body -->
+                <form class="row g-3">
+                  <!-- Campos de nombres y apellidos ya prellenados -->
+                  <div class="col-md-4">
+                      <label for="validationDefault01" class="form-label">Nombres</label>
+                      <input type="text" class="form-control" id="validationDefault01" value="{{ user_profile.nombre }}" required>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="validationDefault02" class="form-label">Apellidos</label>
+                      <input type="text" class="form-control" id="validationDefault02" value="{{ user_profile.apellido }}" required>
+                  </div>
+                  <!-- Otros campos del formulario -->
+                  <div class="col-md-4">
+                      <label for="validationDefaultUsername" class="form-label">Correo</label>
+                      <input type="email" class="form-control" id="validationDefaultUsername" value="{{ user_profile.correo }}" required>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="validationDefault03" class="form-label">Número de Identificación</label>
+                      <input type="text" class="form-control" id="validationDefault03" value="{{ user_profile.numeroiden }}" required>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="validationDefault04" class="form-label">Ficha</label>
+                      <input type="text" class="form-control" id="validationDefault04" value="{{ user_profile.id_ficha }}" required>
+                  </div>
+                  <!-- Otros campos que necesites -->
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Sig.</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+<div class="modal_principal">
+<div class="modal fade modal_principal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Crear Solicitud</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="tipo_solicitud">
+
+        </div>
+        <div class="detalle_solicitud">
+            <form method="post">
+                {% csrf_token %}
+                {{ form_detallesolicitud.as_p }} 
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}

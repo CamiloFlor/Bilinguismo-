@@ -1,0 +1,309 @@
+{% extends "layout/layout.html" %}
+
+{% block tituloventana %} {{tituloventana}} {% endblock  %}
+{% block titulo %}Solicitud{% endblock  %}
+{% block content %}
+<script>
+    function mostrarPreguntas() {
+        var tipoSeleccionado = document.getElementById("tipo").value;
+        var preguntasDiv = document.getElementById("preguntas");
+        preguntasDiv.innerHTML = "";
+        switch (tipoSeleccionado) {
+            case "opcion1":
+                preguntasDiv.innerHTML = `
+                <div class="content__text">
+                    <label class="label__subtitle">Describe mejor tu solicitud</label>
+                    <input class="input__js" >
+                </div>
+            <div class="content__text1">
+                <span class="span__emergente"> Recuerda estar pendiente de tu correo en los proximos dias alli se te especificara claramente la respuesta a tu solicitud, tambien ten en cuenta que este tipo de asesoramiento es con un instructor para tratar temas UNICAMENTE Academicos. </span>
+            </div>
+            <div class="content__text">
+                <label class="label__subtitle" > Cargar Archivo</label>
+                <input class="input__js " type="file" id="fileInput" name="fileInput" onchange="mostrarNombreArchivo()">
+                <button class=" button__button" type="button" onclick="selecionarImage()"> <span class="label__subtitle">Cargar Archivo</span></button>
+            </div>
+            <input id="boton" type="submit" name="guardar" class="button1">
+    
+                            `;
+            
+                break;
+    
+            case "opcion2":
+                preguntasDiv.innerHTML = `
+                <div class="content__text">
+                <label class="label__subtitle">Nivel de Idioma Actual</label>
+            <select class="label__input" name="compeselect" id=""  >
+                <option value="" selected hidden></option>
+                <option class="label__option" value="opcion1">Nivel 1</option>
+                <option class="label__option" value="opcion2">Nivel 2</option>
+                <option class="label__option" value="opcion3">Nivel 3</option>
+                <option class="label__option" value="opcion4">Nivel 4</option>
+                <option class="label__option" value="opcion5">Nivel 5</option>
+                <option class="label__option" value="opcion6">Nivel 6</option>
+                <option class="label__option" value="opcion7">Nivel 7</option>
+                <option class="label__option" value="opcion8">Nivel 8</option>
+                <option class="label__option" value="opcion8">Nivel 9</option>
+                <option class="label__option" value="opcion9">Nivel 10</option>
+                <option class="label__option" value="opcion10">Nivel 11</option>
+                <option class="label__option" value="opcion11">Nivel 12</option>
+                <option class="label__option" value="opcion12">Nivel 13</option>
+            </select>
+            </div>
+            <div class="content__text">
+                <label class="label__subtitle">Nivel de Idioma que Aspira</label>
+                <select class="label__input" name="compeselect1" id=""  >
+                    <option value="" selected hidden></option>
+                    
+                    <option class="label__option" value="opcion1">Nivel 2</option>
+                    <option class="label__option" value="opcion2">Nivel 3</option>
+                    <option class="label__option" value="opcion3">Nivel 4</option>
+                    <option class="label__option" value="opcion4">Nivel 5</option>
+                    <option class="label__option" value="opcion5">Nivel 6</option>
+                    <option class="label__option" value="opcion6">Nivel 7</option>
+                    <option class="label__option" value="opcion7">Nivel 8</option>
+                    <option class="label__option" value="opcion8">Nivel 9</option>
+                    <option class="label__option" value="opcion9">Nivel 10</option>
+                    <option class="label__option" value="opcion10">Nivel 11</option>
+                    <option class="label__option" value="opcion11">Nivel 12</option>
+                    <option class="label__option" value="opcion12">Nivel 13</option>
+                </select>
+            </div>
+            <div class="content__text2">
+                <label class="label__subtitle">Al cargar tu diploma, se confirmara tu nivel actual</label>
+                <label class="label__subtitle">Tipo PDF</label>
+                <input class="input__js " type="file" id="fileInput" name="fileInput" onchange="mostrarNombreArchivo()">
+                <button class=" button__button" type="button" onclick="selecionarImage()"> <span class="label__subtitle">Cargar Diploma</span></button>
+            </div>
+            <div class="content__text1">
+                <span class="span__emergente"> Recuerda estar pendiente de tu correo en los proximos dias,  alli se especificara claramente: respuesta de tu solicitud,
+                    lugar, fecha y hora para tu prueba de evaluacion por competencias. </span>
+            </div>
+            <input id="boton" type="submit" name="guardar" class="button1">`;
+                break;
+    
+                case "opcion3":
+                    preguntasDiv.innerHTML = `
+                    <div class="content__title">
+                        <h2 class="title__title">Competencia por Volver a Evaluar </h2>
+                    </div>
+                                
+                                <div class="content__text4">
+                                    
+                                    <label class="title__subtitle" for="">Competencia2</label>
+                                    <select class="label__input2" name="cmtselect" >
+                                        <option value="" selected hidden></option>
+                                        <option value="opcion1" class="label__option" >Resultado Aprendizaje1</option>
+                                        <option value="opcion2" class="label__option" >Resultado Aprendizaje2</option>
+                                        <option value="opcion3" class="label__option" >Resultado Aprendizaje3</option>
+                                        <option value="opcion4" class="label__option" >Resultado Aprendizaje4</option>
+                                        <option value="opcion5" class="label__option" >Resultado Aprendizaje5</option>
+                                        <option value="opcion6" class="label__option" >Resultado Aprendizaje6</option>
+                                        <option value="opcion7" class="label__option" >Resultado Aprendizaje7</option>
+                                        <option value="opcion8" class="label__option" >Resultado Aprendizaje8</option>
+                                        <option value="opcion9" class="label__option" >Resultado Aprendizaje9</option>
+                                    </select>
+                                </div>
+                                <div class="content__text3">
+                                    <label for="" class="title__subtitle">Competencia1</label>
+                                    <select class="label__input2" name="cmtselect1"   >
+                                        <option value="" selected hidden></option>
+                                        <option value="opcion1" class="label__option" >Resultado Aprendizaje1</option>
+                                        <option value="opcion2" class="label__option" >Resultado Aprendizaje2</option>
+                                        <option value="opcion3" class="label__option" >Resultado Aprendizaje3</option>
+                                        <option value="opcion4" class="label__option" >Resultado Aprendizaje4</option>
+                                        <option value="opcion5" class="label__option" >Resultado Aprendizaje5</option>
+                                        <option value="opcion6" class="label__option" >Resultado Aprendizaje6</option>
+                                        <option value="opcion7" class="label__option" >Resultado Aprendizaje7</option>
+                                        <option value="opcion8" class="label__option" >Resultado Aprendizaje8</option>
+                                        <option value="opcion9" class="label__option" >Resultado Aprendizaje9</option>
+                                    </select>
+                                </div>
+                                <div class="content__text4">
+                                    <label for="" class="title__subtitle">Competencia4</label>
+                                    <select class="label__input1" name="cmtselect2"  >
+                                        <option value="" selected hidden></option>
+                                        <option value="opcion1" class="label__option" >Resultado Aprendizaje1</option>
+                                        <option value="opcion2" class="label__option" >Resultado Aprendizaje2</option>
+                                        <option value="opcion3" class="label__option" >Resultado Aprendizaje3</option>
+                                        <option value="opcion4" class="label__option" >Resultado Aprendizaje4</option>
+                                        <option value="opcion5" class="label__option" >Resultado Aprendizaje5</option>
+                                        <option value="opcion6" class="label__option" >Resultado Aprendizaje6</option>
+                                        <option value="opcion7" class="label__option" >Resultado Aprendizaje7</option>
+                                        <option value="opcion8" class="label__option" >Resultado Aprendizaje8</option>
+                                        <option value="opcion9" class="label__option" >Resultado Aprendizaje9</option>
+                                    </select>
+                                </div>
+                                <div class="content__text3">
+                                    <label for="" class="title__subtitle">Competencia3</label>
+                                    <select class="label__input1" name="cmtselect3"  >
+                                        <option value="" selected hidden></option>
+                                        <option value="opcion1" class="label__option" >Resultado Aprendizaje1</option>
+                                        <option value="opcion2" class="label__option" >Resultado Aprendizaje2</option>
+                                        <option value="opcion3" class="label__option" >Resultado Aprendizaje3</option>
+                                        <option value="opcion4" class="label__option" >Resultado Aprendizaje4</option>
+                                        <option value="opcion5" class="label__option" >Resultado Aprendizaje5</option>
+                                        <option value="opcion6" class="label__option" >Resultado Aprendizaje6</option>
+                                        <option value="opcion7" class="label__option" >Resultado Aprendizaje7</option>
+                                        <option value="opcion8" class="label__option" >Resultado Aprendizaje8</option>
+                                        <option value="opcion9" class="label__option" >Resultado Aprendizaje9</option>
+                                    </select>
+                                </div>
+                                <div class="content__tex2">
+                                    <label class="label__subtitle5">Carga de una vez tu documento a evaluar segun la competencia y el R.aprendizaje que elegiste, para hacer mas rapido tu proceso de respuesta </label>
+                                    <label class="label__subtitle">Tipo PDF</label>
+                                    <input class="input__js " type="file" id="fileInput" name="fileInput" onchange="mostrarNombreArchivo()">
+                                    <button class=" button__button" type="button" onclick="selecionarImage()"> <span class="label__subtitle">Cargar Diploma</span></button>
+                                </div>
+                                <div class="content__text">
+                                    <label class="label__subtitle">Describe mejor tu solicitud</label>
+                                    <input class="input__js" name="description">
+                                </div>
+                                <input id="boton" type="submit" name="guardar" class="button1">
+                            `;
+                break;
+                case "opcion4":
+                preguntasDiv.innerHTML = `
+                <div class="content__text">
+                <label class="label__subtitle">Describe mejor tu solicitud</label>
+                <input type="text" class="input__js" ></input>
+            </div>
+        <div class="content__text">
+            <label class="label__subtitle" > Cargar Archivo</label>
+            <input class="input__js " type="file" id="fileInput" name="fileInput" onchange="mostrarNombreArchivo()">
+            <button class=" button__button" type="button" onclick="selecionarImage()"> <span class="label__subtitle">Cargar Archivo</span></button>
+        </div>
+        
+    <div class="content__text1">
+        <span class="span__emergente"> Recuerda estar pendiente de tu correo en los proximos dias alli se te especificara claramente la respuesta a tu solicitud, tambien tener en cuenta que esta solicitud es para tratar temas UNICAMENTE Academicos del Sena Centro Agropecuario del sector de Bilinguismo. </span>
+    </div>
+        </div>
+        <input id="boton" type="submit" name="guardar" class="button1">
+    `;
+            default: ` `
+                break;
+        }
+    }
+</script>
+<div class="container">
+    <h2>Mis Solicitudes - Usuario</h2>
+    {% if request.user.is_authenticated %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <!-- Agrega más columnas según sea necesario -->
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Crear</a>
+                {% for tiposolicitud in detallesolicitud %}
+                    <tr>
+                        <td>{{ tiposolicitud.id_detallesolicitud }}</td>
+                        <td>{{ tiposolicitud.nombre }}</td>
+                        <td>{{ tiposolicitud.descripcion }}</td>
+                        <!-- Agrega más celdas según sea necesario -->
+                        <td>
+                            <a href="" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="{% url 'usuarios:eliminartiposoli_usuario' tiposolicitud.id_detallesolicitud %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1> Realiza una solicitud o inicia sesion para que puedas ver tus solicitudes
+        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Crear</a>
+    {% endif %}
+</div>
+
+<div class="modal_principal">
+<div class="modal fade " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Verificacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Dentro del modal-body -->
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {% for field in register_form  %}
+                        <label>{{field.label}}</label>
+                        {{ field }}
+                    {% endfor %} 
+                    <select name="id_doc" class="form-control" id="id_doc">
+                        <option value="">Selecciona su tipo de documento</option>
+                        {% for doc in tipodoc %}
+                            <option value="{{ doc.id_doc }}">{{ doc.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Sig.</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="modal_principal">
+<div class="modal fade modal_principal" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel2">Crear Solicitud</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <div class="tipo_solicitud">
+        </div>
+        <div class="detalle_solicitud">
+            {% comment %} <form method="post">
+                {% csrf_token %}
+                {{ form_detallesolicitud.as_p }} 
+                <button type="submit">Enviar</button>
+            </form> {% endcomment %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="id_municipio">DE DONDE ES SU SOLICITUD ?</label><br>
+                <select name="id_municipio" id="id_municipio">
+                    {% for municipio in municipio %}
+                        <option value="{{ municipio.id_municipio }}">{{ municipio.nombre }}</option>
+                    {% endfor %}
+                </select><br><br>
+                <label for="id_tiposolicitud">TIPO DE SOLICITUD</label><br>
+                <select name="id_tiposolicitud" id="id_tiposolicitud">
+                    {% for tiposolicitud in tiposoli %}
+                        <option value="{{ tiposolicitud.id_tiposolicitud }}">{{ tiposolicitud.nombre }}</option>
+                    {% endfor %}
+                </select><br><br>
+                <label for="descripcion">Descripción</label><br>
+                <textarea name="descripcion" id="descripcion" cols="30" rows="5"></textarea><br><br>
+                <label for="fecha_inicio">Fecha de Inicio</label><br>
+                <input type="datetime-local" name="fecha_inicio" id="fecha_inicio"><br><br>
+                <label for="fecha_fin">Fecha de Fin</label><br>
+                <input type="datetime-local" name="fecha_fin" id="fecha_fin"><br><br>
+                <label for="archivo">Archivo</label><br>
+                <input type="file" name="archivo" id="archivo"><br><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Salir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}

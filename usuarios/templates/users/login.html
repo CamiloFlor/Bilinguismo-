@@ -1,0 +1,26 @@
+{% extends "layout/layout.html" %}
+
+
+
+{% block title %}{{title}}{% endblock  %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages  %}
+            <div class="alert alert-warning">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {{register_form.errors}}
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="">Numero de Identificacion</label>
+        <input type="username" name="username"/>
+        <label for="password">Contraseña de Usuario</label>
+        <input type="password" name="password"/>
+        <input type="submit" name="" value="Iniciar Sesion"/>
+    
+    </form>
+    <a name="" id="" class="btn btn-primary" href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
+
+{% endblock %}

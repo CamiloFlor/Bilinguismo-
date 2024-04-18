@@ -1,0 +1,300 @@
+root {
+    --color-principal: #ffffff;
+    --color-segundario: #39A900;
+    --color-background: #f2f7f9;
+    --color-trasnparent: transparent;
+    --color-icon: #B5B6B7;
+    --color-titles: #222222;
+    --color-subtitle: #888;
+    --color-text: #555;
+    --color-border-reviews: #E5E6E7;
+    --color-company: #A5A6A7;
+    --color-background-certificate: #f5f5f5;
+    --color-background-contacto: #fcfcfc;
+}
+
+/*Estilos Generales*/
+/*estilos generales*/
+html {
+    font-size: 10px;/*Esto se utiliza para establecer una base de tamaño de fuente en la página*/
+
+}
+
+/* CAMBIO HEADER */
+.texto-esquina {
+    position: absolute;
+    top: 10px; /* distancia desde la parte superior */
+    left: 50px; /* ajusta la posición a la derecha */
+    font-size: 50px; /* tamaño de la fuente */
+    font-family: Arial, sans-serif; /* fuente del texto */
+    color: green; /* color del texto */
+}
+
+.linea-verde {
+    margin-bottom: 60px; /* Ajusta este valor según la cantidad de espacio adicional que desees */
+    border: none;
+    height: 6px; /* altura de la línea */
+    background-color: #39A200; /* color verde */
+    width: calc(100% - 30px); /* Ajusta el ancho para dejar un espacio de 10px a cada lado */
+    position: absolute;
+    top: 90px; /* Mueve la línea 50px desde la parte superior */
+    left: 10px; /* Asegura que la línea comience desde el mismo punto que el texto */
+}
+.user-info__image {
+    width: 25%;
+    background-color: var(--color-principal);
+    border: 3px solid var(--color-principal);
+    border-radius: 20rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.user-info__image {
+    width: 25%; /* Reducción del tamaño de la imagen */
+    background-color: var(--color-principal);
+    border: 3px solid var(--color-principal);
+    border-radius: 20rem 0 0 20rem;
+    position: absolute; /* Cambiado a absolute */
+    top: 10px;
+    right: 10px; /* Ajustado para la posición superior derecha */
+    z-index: 1; /* Agregado para asegurar que la imagen esté por encima del contenido */
+}
+
+
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "poppins", Helvetica, sans-serif;
+    font-size: 1.5rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+
+    overflow: hidden;
+
+    background-image: url("bili/admin1/static/img/fondo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -20px -120px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-titles);
+
+}
+
+body {
+    background-image: url("../img/fondo.png");
+    /*imagen de fondo*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -20px -120px;
+}
+
+.fondo-imagen {
+    background-image: url("{% static 'img/fondo.png'%}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Otros estilos según sea necesario */
+}
+/*estructura principal*/
+.layout {
+    position: relative;
+    min-width: 1290px;
+    width: 90%;
+    height: 80vh;
+    min-height: 80vh;
+    margin: 10vh auto 2vh; /* Ajuste del margen superior para dar más espacio debajo del header */
+    display: grid;
+    grid-template-areas: "aside content";
+    grid-template-columns: 10% 90%;
+    border-radius: 4rem;
+    box-shadow: 0 0 100px -5px rgba(0, 0, 0, 0.25);
+}
+
+.layout__aside {
+    grid-area: aside;
+    border-radius: 4rem 0 0 4rem;
+    overflow: auto;
+    overflow-x: hidden;
+    /* Otras propiedades si las hay */
+}
+.aside__user-info {
+    
+    display: flex;
+    flex-direction: column;
+    
+
+    min-height: 100%;
+    min-width: 30rem;
+
+    background-color: #39A900;
+    color: var(--color-principal);
+} 
+
+
+
+
+
+
+
+.user-info__footer{
+    position: absolute;
+    bottom: 2rem;
+    font-size: 1.2rem;
+    position: center;
+         
+}
+.layout__content {
+    grid-area: content;
+    height: 100%;
+    min-height: 100%;
+    background-color: var(--color-segundario);
+    border-radius: 0 10rem 10rem 0;
+    overflow-y: auto; /* Agrega desplazamiento vertical */
+}
+.content__page{
+    min-height: 100%;
+    background-color: var(--color-principal);
+    border-radius: 3.2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.page__name{
+    font-size: 6rem;
+    margin-bottom: 1rem;
+}
+.page__job{
+    font-size: 2.1rem;
+    font-weight: lighter;
+    color: var(--color-subtitle);
+
+}
+
+
+/*Estilos barra de navegacion*/
+.navbar {
+    background-color: #39A900;
+}
+
+/*Estilos barra de navegacion*/
+nav{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    background-color: #39A900;
+    border-radius: 4rem 0 0 4rem;
+    width: 90px;
+    overflow: hidden;
+    transition: width 0.2s linear;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1) 
+     ;
+  }
+  .logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 10px 0 0 10px;
+  
+  }
+  .logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  
+  }
+  .logo span{
+    font-weight: bold;
+    padding-left : 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  a{
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table; 
+    width: 300px;
+    padding: 10px;
+  
+  }
+  .fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  
+  }
+  .nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
+  a:hover{
+    background: #eee;
+  
+  }
+  nav:hover{
+    width: 280px;
+    transition: all 0.5s ease;
+  }
+  .logout{
+    position: absolute;
+    bottom: 0;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+/*Estilos para el footer*/
+footer{
+    width: 1250px;
+    background-color: #39A900;
+    border: 1px solid #333333;
+    color: #d1d4d6;
+    text-align: center;
+    padding-top: 10px;
+    margin: 0 auto;
+    box-shadow: 0px 22px 22px gray;
+    margin-bottom: 45px;
+    padding-bottom: 20px;
+    border-radius: 2rem;
+    
+
+
+    
+}
+/* Estilos adicionales para la sección de noticias */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+}

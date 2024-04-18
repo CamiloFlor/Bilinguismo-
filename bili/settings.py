@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4my5_aenq4vi*0z@6)rj&kew&qmn%)clg4fdq##qhm8e0s(+er'
+SECRET_KEY = 'django-insecure-!ruv@83-!_&g@%2n=^dc!w&+k3zjl#$b!v4nmypic37s&_mwgo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'admin1.apps.AdminConfig',
+    'coordinacion',
+    'usuarios',
+    'aprendiz',
+    'instructor'
 ]
 
 MIDDLEWARE = [
@@ -63,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -73,17 +77,25 @@ WSGI_APPLICATION = 'bili.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'bilinguismo',
+        'NAME': 'bilinguismo',
         'USER': 'root',
-        'PASSWORD':'',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT':'3306',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': 'SET GLOBAL sql_mode=STRICT_ALL_TABLES',
+        },
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -108,14 +120,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-co'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
