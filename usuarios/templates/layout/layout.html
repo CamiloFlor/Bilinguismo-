@@ -11,7 +11,6 @@
     
         <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/styl.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
@@ -31,6 +30,7 @@
         <!-- JavaScript de Bootstrap (jQuery debe incluirse primero) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'todo_js/todo.js' %}"></script>
         <title>{% block tituloventana %}
             {% endblock %}
             - Sena-Bilinguismo</title>
@@ -94,7 +94,7 @@
                                     {% endif %}
                                     {% if request.user.is_authenticated %}
                                         <li> 
-                                            <a href="{% url 'noti' %}">
+                                            <a href="">
                                             <i class="fas fa-user"></i>
                                             <span class="nav-item">Crear Noticia</span>
                                             </a>

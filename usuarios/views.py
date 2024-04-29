@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
-from usuarios.forms import RegisterForm, UserProfileForm, DetalleSolicitudForm, TipoDocumentoForm
+from usuarios.forms import RegisterForm, UserProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from usuarios.models import Rol, UserProfile, Detallesolicitud, Tipodocumento, Municipio, TipoSolicitud
+from usuarios.models import Rol,Solicitud, UserProfile, Detallesolicitud, Tipodocumento, TipoSolicitud, Municipios, Departamentos, Poblados
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -78,27 +79,71 @@ def usuario(request, numeroiden, correo):
     })
 def crearsoli_usuario(request):
     if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
-        userprofile_form = UserProfileForm(request.POST)
-        form_detallesolicitud = DetalleSolicitudForm(request.POST)
-        tipodocumentoform = TipoDocumentoForm(request.POST)
-        if form_detallesolicitud.is_valid() and register_form.is_valid() and tipodocumentoform.is_valid():
-            form_detallesolicitud.save()
-            user = register_form.save()
-            return render(request,'vistas/soli_usuarios.html')
+            # Obtener los datos del formulario
+            cod_dpto = request.POST.get('cod_dpto')
+            cod_municipio = request.POST.get('cod_municipio')
+            cod_poblado = request.POST.get('cod_poblado')
+            descripcion = request.POST.get('descripcion')
+            direccion = request.POST.get('direccion')
+            id_tipodoc = request.POST.get('id_doc')  # Tipo de documento del usuario
+            id_tiposolicitud = request.POST.get('id_tiposolicitud')
+            fecha_inicio = request.POST.get('fecha_inicio')
+            archivo = request.FILES.get('archivo')
+            id_programaformacion = request.POST.get('id_programaformacion')
+
+            # Crear instancias de los modelos y asignar los valores
+            userprofile = UserProfile.objects.create(
+                user=user,
+                cod_dpto=cod_dpto,
+                cod_municipio=cod_municipio,
+                cod_poblado=cod_poblado,
+                direccion=direccion,
+                id_doc=id_tipodoc,  # Asignar el tipo de documento
+            )
+            if userprofile.id_doc == 3:
+                userprofile.id_rol = 4
+            userprofile.save()
+
+            detallesolicitud = Detallesolicitud.objects.create(
+                id_tiposolicitud=id_tiposolicitud,
+                descripcion=descripcion,
+                fecha_inicio=fecha_inicio,
+                archivo=archivo,
+                id_programaformacion=id_programaformacion,
+            )
+            detallesolicitud.save()
+            Solicitud = Solicitudes.objects.create(
+                user=user
+            )
+
+            return render(request, 'users/login.html')
     else:
-        form_detallesolicitud = DetalleSolicitudForm()
         register_form = RegisterForm()
-    municipio = Municipio.objects.all()
-    detallesolicitud= Detallesolicitud.objects.all()
+    detallesolicitud = Detallesolicitud.objects.all()
     tiposoli = TipoSolicitud.objects.all()
     tipodoc = Tipodocumento.objects.all()
-    return render(request, 'vistas/soli_usuarios.html', {'form_detallesolicitud': form_detallesolicitud, 'detallesolicitud': detallesolicitud,
+    depto = Departamentos.objects.all()
+    return render(request, 'vistas/soli_usuarios.html', {
+        'detallesolicitud': detallesolicitud,
         'register_form': register_form,
         'tipodoc': tipodoc,
-        'municipio': municipio,
-        'tiposoli': tiposoli
-        })
+        'tiposoli': tiposoli,
+        'depto': depto
+    })
+def get_municipios(request):
+    if request.method == 'GET' and 'departamento' in request.GET:
+        departamento = request.GET['departamento']
+        municipios = Municipios.objects.filter(cod_dpto=departamento).values('cod_municipio', 'nombre_municipio')
+        return JsonResponse(list(municipios), safe=False)
+    else:
+        return JsonResponse({'error': 'Se requiere un parámetro "departamento" '}, status=400)
+def get_poblados(request):
+    if request.method == 'GET' and 'municipios' in request.GET:
+        municipios = request.GET['municipios']
+        poblado = Poblados.objects.filter(cod_municipio=municipios).values('cod_poblado', 'nombre_poblado')
+        return JsonResponse(list(poblado), safe=False)
+    else:
+        return JsonResponse({'error': 'Se requiere un parámetro "Municipio" '}, status=400)
 
 def eliminartiposoli_usuario(request, id_detallesolicitud):
     detallesolicitud = Detallesolicitud.objects.get(id_detallesolicitud=id_detallesolicitud)

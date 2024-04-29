@@ -7,5 +7,7 @@ urlpatterns=[
     path('Registro/', views.registro, name="registro"),
     path('Logout/', views.logout_user, name="logout"),
     path('Solicitud/', views.crearsoli_usuario, name="crearsoli_usuario"),
+    path('get_municipios/', views.get_municipios, name="municipios"),
+    path('get_poblados/', views.get_poblados, name="poblados"),
     path('Solicitud-eliminar/<int:id_detallesolicitud>', views.eliminartiposoli_usuario, name="eliminartiposoli_usuario"),
 ]
