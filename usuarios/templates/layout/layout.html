@@ -1,92 +1,96 @@
-{% load static %}
+{% load static %} <!-- Carga de archivos estáticos -->
+
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta   name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
-        <meta content="Bootstrap News Template - Free HTML Templates" name="description">
+<head>
+    <!-- Metadatos -->
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
+    <meta content="Bootstrap News Template - Free HTML Templates" name="description">
     
-        <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styl.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/fonts/poppins/poppins.css' %}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        
-        <link href="{% static 'lib/slick/slick.css' %}" rel="stylesheet">
-        <link href="{% static 'lib/slick/slick-theme.css' %}" rel="stylesheet">
-        
-        <!-- CSS de Bootstrap -->
-        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-        <!-- JavaScript de Bootstrap (jQuery debe incluirse primero) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'todo_js/todo.js' %}"></script>
-        <title>{% block tituloventana %}
-            {% endblock %}
-            - Sena-Bilinguismo</title>
-    </head>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css' %}"> <!-- Archivo de estilos de Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> <!-- Archivo de estilos personalizado -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styl.css' %}"> <!-- Otro archivo de estilos personalizado -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"> <!-- Archivo de estilos para diseño responsivo -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}"> <!-- Archivo de estilos para noticias -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/poppins/poppins.css' %}"> <!-- Archivo de estilos de la fuente Poppins -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet"> <!-- Archivo de estilos de Bootstrap Icons -->
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon"> <!-- Ícono del sitio web -->
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> <!-- Hojas de estilo de Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"> <!-- Hojas de estilo de Font Awesome -->
+    
+    <link href="{% static 'lib/slick/slick.css' %}" rel="stylesheet"> <!-- Archivo de estilos del slider Slick -->
+    <link href="{% static 'lib/slick/slick-theme.css' %}" rel="stylesheet"> <!-- Tema del slider Slick -->
+    
+    <!-- CSS de Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> <!-- Hojas de estilo de Bootstrap -->
+    <!-- JavaScript de Bootstrap (jQuery debe incluirse primero) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- Biblioteca jQuery -->
+    <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script> <!-- Archivo de JavaScript de Bootstrap -->
+    <script src="{% static 'todo_js/todo.js' %}"></script> <!-- Archivo de JavaScript personalizado -->
+    <!-- Título de la página -->
+    <title>{% block tituloventana %}{% endblock %} - Sena-Bilinguismo</title> <!-- Título dinámico de la página -->
+</head>
+<body> <!-- Inicio del cuerpo de la página -->
+    <!-- Layout principal -->
+    <div class="layout"> <!-- Contenedor principal del layout -->
+        <!-- Barra lateral -->
+        <aside class="layout__aside"> <!-- Sección de la barra lateral -->
+            <!-- Información general del usuario -->
+            <body> <!-- Esto parece ser un error, debería ser un comentario o eliminarse -->
+                <nav> <!-- Inicio de la barra de navegación -->
+                    <ul> <!-- Lista no ordenada de elementos de navegación -->
+                        <li> <!-- Elemento de lista -->
+                            <!-- Enlace al sitio principal con la clase "logo" -->
+                            <a href="https://oferta.senasofiaplus.edu.co/sofia-oferta/" class="logo">
+                                <!-- Imagen del logo con una ruta estática -->
+                                <img src="{% static "img/logo/b-team.jpeg" %}" />
+                                <!-- Texto "SENA" con un subrayado en rojo -->
+                                SENA<span class="text-danger">Bilinguismo</span>
+                            </a>
+                        </li>
 
-    <body>
-        <!-- Layout principal -->
-        <div class="layout">
-            <!-- Barra lateral -->
-            <aside class="layout__aside">
-                <!-- Información general del usuario -->
-                        <body>
-                            <nav>
-                                <ul>
-                                    <li>
-                                        
-                                        <a href="https://oferta.senasofiaplus.edu.co/sofia-oferta/" class="logo">
-                                            <img src="{% static "img/logo/b-team.jpeg" %} " />
-                                            
-                                            SENA<span class="text-danger" >Bilinguismo</span>
-                                        </a>
+                        <!-- Verificación de si el usuario está autenticado -->
+                        {% if user.is_authenticated %}
+                            <!-- Si el usuario está autenticado, se muestra su rol -->
+                            <p>Nombre Rol: {{ user.userprofile.id_rol.nombre }}</p>
+                        {% else %}
+                            <!-- Si el usuario no está autenticado, se muestra un mensaje -->
+                            <p>No has iniciado sesión.</p>
+                        {% endif %}
 
+                        <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
+                        <li>
+                            <a href="{% url 'inicio_usuarios' %}">
+                                <i class="fas fa-home"></i> <!-- Icono de casa -->
+                                <!-- Texto para mostrar noticias a todos los usuarios -->
+                                <span class="nav-item">noticias todos los usuarios</span>
+                            </a>
+                        </li>
 
-                                    </li>
+                        <!-- Elemento de lista con un enlace para crear una solicitud de usuario -->
+                        <li> 
+                            <a href="{% url 'usuarios:crearsoli_usuario' %}">
+                                <i class="fas fa-user"></i> <!-- Icono de usuario -->
+                                <!-- Texto para crear solicitud de usuarios generales -->
+                                <span class="nav-item">Solicitud usuarios general</span>
+                            </a>
+                        </li>
 
-                                    {% if user.is_authenticated %}
-                                    <p>Nombre Rol: {{ user.userprofile.id_rol.nombre }}</p>
-
-                                    {% else %}
-                                    <p>No has iniciado sesión.</p>
-                                    {% endif %}
-
-
-                                    <li>
-                                        <a href="{% url 'inicio_usuarios' %}" >
-                                        <i class="fas fa-home"></i>
-                                        <span class="nav-item">noticias todos los usuarios</span>
-                                        </a>
-                                    </li>
-
-                                    <li> 
-                                        <a href="{% url 'usuarios:crearsoli_usuario' %}">
-                                        <i class="fas fa-user"></i>
-                                        <span class="nav-item">Solicitud usuarios general </span>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{% url 'inicio_usuarios' %}" >
-                                        <i class="fas fa-home"></i>
-                                        <span class="nav-item">instructores todos los usuarios  </span>
-                                        </a>
-                                    </li>
-
-
-
+                        <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
+                        <li>
+                            <a href="{% url 'inicio_usuarios' %}">
+                                <i class="fas fa-home"></i> <!-- Icono de casa -->
+                                <!-- Texto para mostrar noticias a todos los instructores -->
+                                <span class="nav-item">instructores todos los usuarios</span>
+                            </a>
+                        </li>
 
 
 
@@ -94,74 +98,118 @@
                                     
                                     {% if user.userprofile.id_rol.id_rol == 1%}
                                     <li> 
+                                        <!-- Elemento de lista -->
                                         <a href="">
-                                        <i class="fas fa-user"></i>
-                                        <span class="nav-item">solo para el APRENDIZ 1 </span>
+                                            <!-- Enlace vacío (sin URL definida) -->
+                                            <i class="fas fa-user"></i>
+                                            <!-- Icono de usuario -->
+                                            <span class="nav-item">solo para el APRENDIZ 1 </span>
+                                            <!-- Texto indicando "solo para el APRENDIZ 1" -->
                                         </a>
                                     </li>
                                     <li> 
+                                        <!-- Elemento de lista -->
                                         <a href="">
-                                        <i class="fas fa-user"></i>
-                                        <span class="nav-item">solo para el APRENDIZ 2</span>
+                                            <!-- Enlace vacío (sin URL definida) -->
+                                            <i class="fas fa-user"></i>
+                                            <!-- Icono de usuario -->
+                                            <span class="nav-item">solo para el APRENDIZ 2</span>
+                                            <!-- Texto indicando "solo para el APRENDIZ 2" -->
                                         </a>
                                     </li>
                                     <li> 
+                                        <!-- Elemento de lista -->
                                         <a href="">
-                                        <i class="fas fa-user"></i>
-                                        <span class="nav-item">solo para el APRENDIZ 3 </span>
+                                            <!-- Enlace vacío (sin URL definida) -->
+                                            <i class="fas fa-user"></i>
+                                            <!-- Icono de usuario -->
+                                            <span class="nav-item">solo para el APRENDIZ 3 </span>
+                                            <!-- Texto indicando "solo para el APRENDIZ 3" -->
                                         </a>
                                     </li>
-
+                                    
 
                                         {% endif %}
                                         {% if user.userprofile.id_rol.id_rol == 2%}
                                         <li> 
+                                            <!-- Elemento de lista -->
                                             <a href="">
-                                            <i class="fas fa-user"></i>
-                                            <span class="nav-item">solo para el INSTRUCTOR  1 </span>
+                                                <!-- Enlace vacío (sin URL definida) -->
+                                                <i class="fas fa-user"></i>
+                                                <!-- Icono de usuario -->
+                                                <span class="nav-item">solo para el INSTRUCTOR  1 </span>
+                                                <!-- Texto indicando "solo para el INSTRUCTOR  1" -->
                                             </a>
                                         </li>
                                         <li> 
+                                            <!-- Elemento de lista -->
                                             <a href="">
-                                            <i class="fas fa-user"></i>
-                                            <span class="nav-item">solo para el INSTRUCTOR  2 </span>
+                                                <!-- Enlace vacío (sin URL definida) -->
+                                                <i class="fas fa-user"></i>
+                                                <!-- Icono de usuario -->
+                                                <span class="nav-item">solo para el INSTRUCTOR  2 </span>
+                                                <!-- Texto indicando "solo para el INSTRUCTOR  2" -->
                                             </a>
                                         </li>
                                         <li> 
+                                            <!-- Elemento de lista -->
                                             <a href="">
-                                            <i class="fas fa-user"></i>
-                                            <span class="nav-item">solo para el INSTRUCTOR  3 </span>
+                                                <!-- Enlace vacío (sin URL definida) -->
+                                                <i class="fas fa-user"></i>
+                                                <!-- Icono de usuario -->
+                                                <span class="nav-item">solo para el INSTRUCTOR  3 </span>
+                                                <!-- Texto indicando "solo para el INSTRUCTOR  3" -->
                                             </a>
                                         </li>
+                                        
                                         {% endif %}
                                         {% if user.userprofile.id_rol.id_rol == 3%}
 
-                                            <li> 
-                                                <a href="{% url 'coordinacion:inicio_coordinacion' %}">
-
+                                        <li> 
+                                            <!-- Elemento de lista -->
+                                            <a href="{% url 'coordinacion:inicio_coordinacion' %}">
+                                                <!-- Enlace dinámico que apunta a la URL 'coordinacion:inicio_coordinacion' -->
                                                 <i class="fas fa-user"></i>
+                                                <!-- Icono de usuario -->
                                                 <span class="nav-item">Panel de Administrador</span>
-                                                    
-                                                </a>
+                                                <!-- Texto indicando "Panel de Administrador" -->
+                                            </a>
+                                        </li>
+                                        
 
-                                            </li>
-
-
-                                            
                                             <li> 
+                                                <!-- Elemento de lista -->
                                                 <a href="{% url 'coordinacion:noticias' %}">
-                                                <i class="fas fa-user"></i>
-                                                <span class="nav-item">Crear Noticias Administrador </span>
+                                                    <!-- Enlace dinámico que apunta a la URL 'coordinacion:noticias' -->
+                                                    <i class="fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="nav-item">Crear Noticias Administrador </span>
+                                                    <!-- Texto indicando "Crear Noticias Administrador" -->
                                                 </a>
                                             </li>
-
                                             <li> 
+                                                <!-- Otro elemento de lista -->
                                                 <a href="{% url 'coordinacion:actualizarperfil' %}">
-                                                <i class="fas fa-user"></i>
-                                                <span class="nav-item">actuaizar perfil Admnistrador</span>
+                                                    <!-- Enlace dinámico que apunta a la URL 'coordinacion:actualizarperfil' -->
+                                                    <i class="fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="nav-item">actuaizar perfil Admnistrador</span>
+                                                    <!-- Texto indicando "actuaizar perfil Admnistrador" -->
                                                 </a>
                                             </li>
-
+                                            <li> 
+                                                <!-- Otro elemento de lista -->
+                                                <a href="{% url 'coordinacion:actualizarperfil' %}">
+                                                    <!-- Enlace dinámico que apunta a la URL 'coordinacion:actualizarperfil' -->
+                                                    <i class="fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="nav-item">Gestión de Permisos Administrador</span>
+                                                    <!-- Texto indicando "Gestión de Permisos Administrador" -->
+                                                </a>
+                                            </li>
+                                            
+                                            
+                                            
                                             
                                         {% endif %}
 
@@ -178,89 +226,113 @@
 
 
                                     {% if request.user.is_authenticated %}
-                                        <li> 
-                                            <a href="">
+                                    <li> 
+                                        <!-- Elemento de lista -->
+                                        <a href="">
+                                            <!-- Enlace sin destino especificado -->
                                             <i class="fas fa-user"></i>
+                                            <!-- Icono de usuario -->
                                             <span class="nav-item"> CURSOS DE INGLES </span>
-                                            </a>
-                                        </li>
-                                        <li> 
-                                            <a href="">
+                                            <!-- Texto indicando "CURSOS DE INGLES" -->
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <!-- Otro elemento de lista -->
+                                        <a href="">
+                                            <!-- Enlace sin destino especificado -->
                                             <i class="fas fa-user"></i>
+                                            <!-- Icono de usuario -->
                                             <span class="nav-item"> para usuarios registrados 2</span>
-                                            </a>
-                                        </li>
+                                            <!-- Texto indicando "para usuarios registrados 2" -->
+                                        </a>
+                                    </li>
                                         <li> 
+                                            <!-- Elemento de lista -->
                                             <a href="">
-                                            <i class="fas fa-user"></i>
-                                            <span class="nav-item"> para usuarios registrados 3</span>
+                                                <!-- Enlace sin destino especificado -->
+                                                <i class="fas fa-user"></i>
+                                                <!-- Icono de usuario -->
+                                                <span class="nav-item"> para usuarios registrados 3</span>
+                                                <!-- Texto indicando para usuarios registrados 3 -->
                                             </a>
                                         </li>
-
                                         <li>
+                                            <!-- Otro elemento de lista -->
                                             <a href="{% url 'usuarios:logout' %}" class="logout">
-                                            <i class="fas fa-sing-out-alt"></i>
-                                            <span class="nav-item">boton cerrar seccion </span>
+                                                <!-- Enlace con URL generada por Django -->
+                                                <i class="fas fa-sing-out-alt"></i>
+                                                <!-- Icono de "cerrar sesión" -->
+                                                <span class="nav-item">boton cerrar seccion </span>
+                                                <!-- Texto indicando "botón cerrar sesión" -->
                                             </a>
                                         </li>
-                                    {% else %}
-                                        <li>
-                                            <a href="#">
-                                            <i class="fas fa-question-circle"></i>
-                                            <span class="nav-item">sin autenticar general 1 </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                            <i class="fas fa-question-circle"></i>
-                                            <span class="nav-item">sin autenticar  general 2 </span>
-                                            </a>
-                                        </li>
-
+                                        {% else %}
+                                    <li> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
+                                        <a href="#"> <!-- Define un enlace con un marcador de posición "#" -->
+                                            <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
+                                            <span class="nav-item">sin autenticar general 1 </span> <!-- Texto del menú de navegación -->
+                                        </a> <!-- Fin del enlace -->
+                                    </li> <!-- Fin del elemento de lista -->
+                                    
+                                        <li> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
+                                            <a href="#"> <!-- Define un enlace con un marcador de posición "#" -->
+                                                <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
+                                                <span class="nav-item">sin autenticar  general 2 </span> <!-- Texto del menú de navegación -->
+                                            </a> <!-- Fin del enlace -->
+                                        </li> <!-- Fin del elemento de lista -->
                                         
-                                        <li>
-                                            <a href="#">
-                                            <i class="fas fa-question-circle"></i>
-                                            <span class="nav-item">sin autenticar general 3 </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{% url 'usuarios:login_user' %}">
-                                            <i class="fas fa-question-circle"></i>
-                                            <span class="nav-item">Iniciar Sesion</span>
-                                            </a>
-                                        </li>
+                                        
+                                        <li> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
+                                            <a href="#"> <!-- Define un enlace con un marcador de posición "#" -->
+                                                <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
+                                                <span class="nav-item">sin autenticar general 3 </span> <!-- Texto del menú de navegación -->
+                                            </a> <!-- Fin del enlace -->
+                                        </li> <!-- Fin del elemento de lista -->
+                                        <li> <!-- Comienza otro elemento de lista -->
+                                            <a href="{% url 'usuarios:login_user' %}"> <!-- Define un enlace con una URL dinámica a la página de inicio de sesión -->
+                                                <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
+                                                <span class="nav-item">Iniciar Sesion</span> <!-- Texto del menú de navegación -->
+                                            </a> <!-- Fin del enlace -->
+                                        </li> <!-- Fin del elemento de lista -->
                                     {% endif %}
                                 </ul>
                             </nav>
                         </body>  
             </aside>
     <!--layout principal-->
-
-        <main class="layout__content">
-            <section class="content__page">
-                {% block content %} {% endblock %}
-            </section>
-        </main>
-    </div>
-
-    
-
+    <main class="layout__content"> <!-- Define el contenido principal del diseño -->
+        <section class="content__page"> <!-- Define una sección de la página -->
+            {% block content %} <!-- Define un bloque de contenido llamado "content" -->
+            {% endblock %} <!-- Finaliza el bloque de contenido -->
+        </section>
+    </main>
+    </div> <!-- Cierra el div principal -->
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
+<!-- Incluye la biblioteca Popper.js, que es una dependencia de Bootstrap para manejar la posición emergente y la información sobre herramientas -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+</script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static "lib/easing/easing.min.js" %}"></script>
-    <script src="{% static "lib/slick/slick.min.js" %}"></script>
+<!-- Incluye la biblioteca Bootstrap.min.js, que contiene los scripts de Bootstrap para las funcionalidades de los componentes -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+</script>
 
-    <!-- Template Javascript -->
-    <script src="{% static "js/main.js" %} "></script>
+<!-- JavaScript Libraries -->
+<!-- Incluye jQuery, una biblioteca de JavaScript que simplifica la manipulación del DOM y el manejo de eventos -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- Incluye bootstrap.bundle.min.js, que es una versión empaquetada de Bootstrap que incluye jQuery y Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+<!-- Incluye easing.min.js, que proporciona funciones de aceleración para las animaciones -->
+<script src="{% static "lib/easing/easing.min.js" %}"></script>
+
+<!-- Incluye slick.min.js, que es una biblioteca para crear carruseles y sliders -->
+<script src="{% static "lib/slick/slick.min.js" %}"></script>
+
+<!-- Template Javascript -->
+<!-- Incluye main.js, que contiene scripts específicos del sitio web o la aplicación -->
+<script src="{% static "js/main.js" %} "></script>
 </body>
 </html>
