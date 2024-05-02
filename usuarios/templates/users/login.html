@@ -16,10 +16,14 @@
         {% csrf_token %}
         <label for="">Numero de Identificacion</label>
         <input type="username" name="username"/>
+        <br>
         <label for="password">Contraseña de Usuario</label>
         <input type="password" name="password"/>
-        <input type="submit" name="" value="Iniciar Sesion"/>
-    
+        <br>
+
+
+        <input  type="submit" name="" value="Iniciar Sesion"/>
+
     </form>
     <a name="" id="" class="btn btn-primary" href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
 

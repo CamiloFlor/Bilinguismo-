@@ -149,3 +149,6 @@ def eliminartiposoli_usuario(request, id_detallesolicitud):
     detallesolicitud = Detallesolicitud.objects.get(id_detallesolicitud=id_detallesolicitud)
     detallesolicitud.delete()
     return redirect('inicio_usuarios')
+
+
+

@@ -9,7 +9,7 @@
         {{ field }}
     {% endfor %} 
     <select name="id_rol" class="form-control" id="id_id_rol">
-        <option value="">Selecciona un rol</option>
+        <option value="">Por favor, selecciona un rol para continuar.</option>
         {% for rol in roles %}
             <option value="{{ rol.id_rol }}">{{ rol.nombre }}</option>
         {% endfor %}

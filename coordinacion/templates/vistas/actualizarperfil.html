@@ -1,0 +1,290 @@
+{% extends "layout/layout.html" %}
+
+{% block tituloventana %} {{ tituloventana }} {% endblock %}
+{% block titulo %}ACTUALIZAR PERFIL ADMINISTRADOR{% endblock %}
+{% block content %}
+<h1 class="page__name">ACTUALIZAR PEFIL ADMINISTRADOR</h1>
+<h2 class="page__job">Analistas y Desarrolladores SOFTWARE SDFSF</h2>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    form {
+        max-width: 600px;
+        margin: 10px auto;
+        padding: 200px;
+        background-color: #f4f4f4;
+        border-radius: 18px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    select {
+        width: 200%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        width: 200%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+<h2>Actualizar Perfil de Usuario</h2>
+   
+    <body>
+        <h1>Editar Usuario</h1>
+    
+        <form method="post">
+    
+            {% csrf_token %}
+    
+            <label for="id_username">Nombre de usuario:</label>
+            <input type="text" id="id_username" name="username">
+    
+            <label for="id_numeroiden">Número de Identificación:</label>
+            <input type="text" id="id_numeroiden" name="numeroiden" value="{{ usuario.numeroiden }}">
+            
+            <label for="id_nombre">Primer Nombre:</label>
+            <input type="text" id="id_nombre" name="nombre" value="{{ usuario.nombre }}">
+            
+            <label for="id_segundonombre">Segundo Nombre:</label>
+            <input type="text" id="id_segundonombre" name="segundonombre" value="{{ usuario.segundonombre }}">
+            
+            <label for="id_apellido">Primer Apellido:</label>
+            <input type="text" id="id_apellido" name="apellido" value="{{ usuario.apellido }}">
+            
+            <label for="id_segundoapellido">Segundo Apellido:</label>
+            <input type="text" id="id_segundoapellido" name="segundoapellido" value="{{ usuario.segundoapellido }}">
+            
+            <label for="id_email">Correo electrónico Principal:</label>
+            <input type="email" id="id_email" name="email">
+            
+    
+            
+            <label for="id_correosecundario">Correo Electrónico secundario:</label>
+            <input type="email" id="id_correosecundario" name="correosecundario" value="{{ usuario.correosecundario }}">
+            
+    
+            <label for="id_genero">Género:</label>
+            <select id="id_genero" name="genero">
+                <option value="">Seleccionar género</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+            </select>
+            
+            <label for="id_fechanacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="id_fechanacimiento" name="fechanacimiento" value="{{ usuario.fechanacimiento }}">
+            
+    
+            <label for="id_celular">Celular:</label>
+            <input type="text" id="id_celular" name="celular" value="{{ usuario.celular }}">
+            
+    
+    
+            <label for="id_celular">Celular Secundario:</label>
+            <input type="text" id="id_celular" name="celular" value="{{ usuario.celular }}">
+            
+    
+            <label for="id_telefono_fijo">Teléfono Fijo:</label>
+            <input type="text" id="id_telefono_fijo" name="telefono_fijo">
+        
+    
+    
+    
+            <label for="id_password">Contraseña:</label>
+            <input type="password" id="id_password" name="password">
+            
+            <label for="id_confirm_password">Confirmar contraseña:</label>
+            <input type="password" id="id_confirm_password" name="confirm_password">
+            
+            <label for="id_country">País:</label>
+            <select id="id_country" name="country">
+                <option value="">Seleccionar país</option>
+                <option value="1">Argentina</option>
+                <option value="2">Bolivia</option>
+                <option value="3">Brasil</option>
+                <option value="4">Chile</option>
+                <option value="5">Colombia</option>
+                <option value="6">Ecuador</option>
+                <option value="7">Guyana</option>
+                <option value="8">Paraguay</option>
+                <option value="9">Perú</option>
+                <option value="10">Surinam</option>
+                <option value="11">Uruguay</option>
+                <option value="12">Venezuela</option>
+            </select>
+            
+    
+    
+            <label for="id_departamento">Departamento:</label>
+            <select id="id_departamento" name="departamento">
+                <option value="">Seleccionar departamento</option>
+                <option value="Amazonas">Amazonas</option>
+                <option value="Antioquia">Antioquia</option>
+                <option value="Arauca">Arauca</option>
+                <option value="Atlántico">Atlántico</option>
+                <option value="Bolívar">Bolívar</option>
+                <option value="Boyacá">Boyacá</option>
+                <option value="Caldas">Caldas</option>
+                <option value="Caquetá">Caquetá</option>
+                <option value="Casanare">Casanare</option>
+                <option value="Cauca">Cauca</option>
+                <option value="Cesar">Cesar</option>
+                <option value="Chocó">Chocó</option>
+                <option value="Córdoba">Córdoba</option>
+                <option value="Cundinamarca">Cundinamarca</option>
+                <option value="Guainía">Guainía</option>
+                <option value="Guaviare">Guaviare</option>
+                <option value="Huila">Huila</option>
+                <option value="La Guajira">La Guajira</option>
+                <option value="Magdalena">Magdalena</option>
+                <option value="Meta">Meta</option>
+                <option value="Nariño">Nariño</option>
+                <option value="Norte de Santander">Norte de Santander</option>
+                <option value="Putumayo">Putumayo</option>
+                <option value="Quindío">Quindío</option>
+                <option value="Risaralda">Risaralda</option>
+                <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+                <option value="Santander">Santander</option>
+                <option value="Sucre">Sucre</option>
+                <option value="Tolima">Tolima</option>
+                <option value="Valle del Cauca">Valle del Cauca</option>
+                <option value="Vaupés">Vaupés</option>
+                <option value="Vichada">Vichada</option>
+            </select>
+            
+    
+            <label for="id_ciudad">Ciudad:</label>
+            <input type="text" id="id_ciudad" name="ciudad">
+            
+            
+            <label for="id_codigo_postal">Código Postal:</label>
+            <input type="text" id="id_codigo_postal" name="codigo_postal">
+            
+            <label for="id_direccion">Dirección:</label>
+            <input type="text" id="id_direccion" name="direccion">
+            
+    
+            <label for="id_direccion">Barrio:</label>
+            <input type="text" id="id_direccion" name="direccion">
+            
+    
+    
+    
+            <label for="id_interests">Intereses:</label>
+            <input type="text" id="id_interests" name="interests">
+    
+            <label for="id_bio">Biografía:</label>
+            <textarea id="id_bio" name="bio" rows="4"></textarea>
+    
+            <label for="id_facebook">Perfil de Facebook:</label>
+            <input type="text" id="id_facebook" name="facebook">
+    
+            <label for="id_twitter">Perfil de Twitter:</label>
+            <input type="text" id="id_twitter" name="twitter">
+    
+            <label for="id_linkedin">Perfil de LinkedIn:</label>
+            <input type="text" id="id_linkedin" name="linkedin">
+    
+            <label for="id_language">Idioma preferido:</label>
+            <select id="id_language" name="language">
+                <option value="">Seleccionar idioma</option>
+                <option value="ingles">Inglés</option>
+                <option value="espanol">Español</option>
+                <option value="frances">Francés</option>
+                <option value="aleman">Alemán</option>
+                <option value="portugues">Portugués</option>
+                <option value="italiano">Italiano</option>
+                <option value="mandarin">Mandarín</option>
+                <option value="ruso">Ruso</option>
+                <option value="japones">Japonés</option>
+                <option value="arabe">Árabe</option>
+                <option value="hindi">Hindi</option>
+                <option value="bengali">Bengalí</option>
+                <option value="persa">Persa</option>
+                <option value="coreano">Coreano</option>
+                <option value="turco">Turco</option>
+                <option value="vietnamita">Vietnamita</option>
+                <option value="hebreo">Hebreo</option>
+                <option value="polaco">Polaco</option>
+                <option value="holandes">Holandés</option>
+                <option value="sueco">Sueco</option>
+            </select>
+            
+    
+    
+            <label for="id_education_level">Nivel de estudios:</label>
+    <select id="id_education_level" name="education_level">
+        <option value="">Seleccionar nivel de estudios</option>
+        <option value="primaria">Primaria</option>
+        <option value="secundaria">Secundaria</option>
+        <option value="tecnico">Técnico</option>
+        <option value="tecnologo">Tecnólogo</option>
+        <option value="pregrado">Pregrado</option>
+        <option value="postgrado">Postgrado</option>
+    </select>
+    
+    
+    
+    <label for="id_primary_school">Primaria:</label>
+    <input type="text" id="id_primary_school" name="primary_school" placeholder="Institución donde realizaste la primaria">
+    
+    <label for="id_secondary_school">Secundaria:</label>
+    <input type="text" id="id_secondary_school" name="secondary_school" placeholder="Institución donde realizaste la secundaria">
+    
+    <label for="id_technical_school">Técnico:</label>
+    <input type="text" id="id_technical_school" name="technical_school" placeholder="Institución donde realizaste el técnico">
+    
+    <label for="id_technologist_school">Tecnólogo:</label>
+    <input type="text" id="id_technologist_school" name="technologist_school" placeholder="Institución donde realizaste el tecnólogo">
+    
+    <label for="id_undergraduate_university">Pregrado:</label>
+    <input type="text" id="id_undergraduate_university" name="undergraduate_university" placeholder="Institución donde realizaste el pregrado">
+    
+    <label for="id_postgraduate_university">Postgrado:</label>
+    <input type="text" id="id_postgraduate_university" name="postgraduate_university" placeholder="Institución donde realizaste el postgrado">
+    
+    
+    
+    
+            <label for="id_notifications">Notificaciones:</label>
+            <select id="id_notifications" name="notifications">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+    
+            <label for="id_newsletter">Suscripción a boletines:</label>
+            <select id="id_newsletter" name="newsletter">
+                <option value="1">Sí</option>
+                <option value="0">No</option>
+            </select>
+    
+            <!-- Agregar más campos según sea necesario -->
+    
+            <button type="submit">Guardar Cambios</button>
+            
+        </form>
+    
+    </body>
+
+
+<!-- Contenido específico de la página de noticias -->
+{% endblock %}
