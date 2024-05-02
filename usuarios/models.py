@@ -163,7 +163,7 @@ class Detallesolicitud(models.Model):
     id_detallesolicitud = models.AutoField(primary_key=True)
     id_tiposolicitud = models.ForeignKey(TipoSolicitud, models.DO_NOTHING, db_column='id_tiposolicitud', blank=True, null=True)
     descripcion = models.CharField(max_length=250, blank=True, null=True)
-    archivo = models.FileField(upload_to='archivos/')
+    archivo = models.FileField(upload_to='archivos_soli/')
     url = models.CharField(max_length=250, blank=True, null=True)
     imagen = models.TextField(db_column='Imagen', blank=True, null=True)  # Field name made lowercase.
     fecha_fin = models.DateTimeField(blank=True, null=True)
@@ -230,7 +230,6 @@ class UserProfile(models.Model):
     celular = models.CharField(max_length=11, blank=True, null=True)
     correo = models.CharField(max_length=50, blank=True, null=True)
     correo1 = models.CharField(max_length=50, blank=True, null=True)
-    password = models.CharField(max_length=128, blank=True, null=True)
     id_genero = models.ForeignKey(Genero, models.DO_NOTHING, db_column='id_genero', blank=True, null=True)
     id_estadoxinstru = models.ForeignKey(Estadoxinstru, models.DO_NOTHING, db_column='id_estadoxinstru', blank=True, null=True)
     direccion = models.CharField(max_length=250, blank=True, null=True)
