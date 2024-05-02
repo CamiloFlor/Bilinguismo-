@@ -85,7 +85,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '3307',
         'OPTIONS': {
             'init_command': 'SET GLOBAL sql_mode=STRICT_ALL_TABLES',
         },

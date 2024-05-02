@@ -45,6 +45,8 @@
                         <body>
                             <nav>
                                 <ul>
+               
+
                                     <li>
                                         
                                         <a href="https://oferta.senasofiaplus.edu.co/sofia-oferta/" class="logo">
@@ -52,82 +54,164 @@
                                             
                                             SENA<span class="text-danger" >Bilinguismo</span>
                                         </a>
+
+
+                                    </li>
+
+                                    {% if user.is_authenticated %}
+                                    <p>Nombre Rol: {{ user.userprofile.id_rol.nombre }}</p>
+                                  
+                                    {% else %}
+                                    <p>No has iniciado sesión.</p>
+                                    {% endif %}
+
+
+
+
+                                    <li> 
+                                        <a href="{% url 'usuarios:crearsoli_usuario' %}">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">Solicitud usuarios general </span>
+                                        </a>
                                     </li>
                                     <li>
                                         <a href="{% url 'inicio_usuarios' %}" >
                                         <i class="fas fa-home"></i>
-                                        <span class="nav-item">Inicio</span>
+                                        <span class="nav-item">noticias todos los usuarios</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{% url 'inicio_usuarios' %}" >
+                                        <i class="fas fa-home"></i>
+                                        <span class="nav-item">intructores todos los usuarios  </span>
+                                        </a>
+                                    </li>
+
+
+
                                     {% if request.user.is_authenticated %}
-                                        {% if request.userprofile.id_rol == 1%}
+                                       
+                                    {% if user.userprofile.id_rol.id_rol == 1%}
+                                    <li> 
+                                        <a href="">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">solo para el APRENDIZ 1 </span>
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">solo para el APRENDIZ 2</span>
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">solo para el APRENDIZ 3 </span>
+                                        </a>
+                                    </li>
+
+
+                                        {% endif %}
+                                        {% if user.userprofile.id_rol.id_rol == 2%}
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">solo para el INSTRUCTOR  1 </span>
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">solo para el INSTRUCTOR  2 </span>
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">solo para el INSTRUCTOR  3 </span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        {% if user.userprofile.id_rol.id_rol == 3%}
                                             <li> 
-                                                <a href="{% url 'aprendiz:crearsoli_aprendiz' %}">
+                                                <a href="">
                                                 <i class="fas fa-user"></i>
-                                                <span class="nav-item">Solicitud</span>
+                                                <span class="nav-item">solo para el coordinador 1 </span>
                                                 </a>
                                             </li>
-                                        {% endif %}
-                                        {% if request.userprofile.id_rol == 2%}
                                             <li> 
-                                                <a href="{% url 'instructor:crearsoli_instructor' %}">
+                                                <a href="">
                                                 <i class="fas fa-user"></i>
-                                                <span class="nav-item">Solicitud</span>
+                                                <span class="nav-item">solo para el coordinador 2 </span>
                                                 </a>
                                             </li>
-                                        {% endif %}
-                                        {% if request.userprofile.id_rol == 3%}
+
                                             <li> 
-                                                <a href="{% url 'coordinacion:crearsoli_coordinacion' %}">
+                                                <a href="">
                                                 <i class="fas fa-user"></i>
-                                                <span class="nav-item">Solicitud</span>
+                                                <span class="nav-item">solo para el coordinador 3 </span>
                                                 </a>
                                             </li>
+
                                         {% endif %}
+
+
+
                                     {% else %}
                                         <li> 
                                             <a href="{% url 'usuarios:crearsoli_usuario' %}">
                                             <i class="fas fa-user"></i>
-                                            <span class="nav-item">Solicitud</span>
+                                            <span class="nav-item">Solicitud bolsa coorporativa </span>
                                             </a>
                                         </li>
                                     {% endif %}
+
+
+
                                     {% if request.user.is_authenticated %}
                                         <li> 
                                             <a href="">
                                             <i class="fas fa-user"></i>
-                                            <span class="nav-item">Crear Noticia</span>
+                                            <span class="nav-item"> para usuarios registrados 1</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                            <i class="fas fa-chart-bar"></i>
-                                            <span class="nav-item">Analytics</span>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item"> para usuarios registrados 2</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                            <i class="fas fa-tasks"></i>
-                                            <span class="nav-item">Task</span>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item"> para usuarios registrados 3</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                            <i class="fas fa-cog"></i>
-                                            <span class="nav-item">Setting</span>
-                                            </a>
-                                        </li>
+
                                         <li>
                                             <a href="{% url 'usuarios:logout' %}" class="logout">
                                             <i class="fas fa-sing-out-alt"></i>
-                                            <span class="nav-item">Log out</span>
+                                            <span class="nav-item">boton cerrar seccion </span>
                                             </a>
                                         </li>
                                     {% else %}
                                         <li>
                                             <a href="#">
                                             <i class="fas fa-question-circle"></i>
-                                            <span class="nav-item">Help</span>
+                                            <span class="nav-item">sin autenticar general 1 </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="nav-item">sin autenticar  general 2 </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="nav-item">sin autenticar general 3 </span>
                                             </a>
                                         </li>
                                         <li>
@@ -150,9 +234,6 @@
         </main>
     </div>
 
-    
-
-   
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
