@@ -54,7 +54,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{% url 'usuarios:registro' %}">
+                <form method="post" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="id_municipio">De donde Realiza su SOLICITUD ?</label><br>
                     <div class="row mt-12">
@@ -124,15 +124,14 @@
                             </select>
                         </div>
                     </div>	
-                    <label for="id_municipio">Por favor digite aqui el nombre/numero de: Barrio-Comuna y Direccion </label><br>
-                    <input type="text" name="id_direccion" id="id_direccion" class="form-control"> <br>
-                    <select name="id_doc" class="form-control" id="id_doc">
-                        <option value="">Selecciona su tipo de documento</option>
+                    <label >Por favor digite aqui el nombre/numero de: Barrio-Comuna y Direccion </label><br>
+                    <input type="text" name="direccion" id="direccion" class="form-control"> <br>
+                    <select name="id_doc" class="form-control" id="id_id_doc">
+                        <option value="-1">Selecciona su tipo de documento</option>
                         {% for doc in tipodoc %}
                             <option value="{{ doc.id_doc }}">{{ doc.nombre }}</option>
                         {% endfor %}
                     </select>
-                    
                     <div class="form-group">
                         {{ register_form.username.label_tag }}
                         {{ register_form.username }}
@@ -157,10 +156,6 @@
                         {{ register_form.password2.label_tag }}
                         {{ register_form.password2 }}
                     </div>
-                        
-                    </form>
-                    <form action="usuarios:crearsoli_usuario" method="post">
-                        {% csrf_token %}
                         <label for="id_tiposolicitud"> Seleccione TIPO DE SOLICITUD</label><br>
                         <select name="id_tiposolicitud" id="id_tiposolicitud" onchange="MostrarTipo_soli()">
                         <option></option>
@@ -169,14 +164,18 @@
                         {% endfor %}
                         </select><br>
                         <label for="descripcion">Descripción</label><br>
-                        <textarea name="descripcion" id="descripcion" cols="30" rows="5"></textarea><br><br>
+                        <input type="text" name="descripcion" id="descripcion" ></input><br>
                         <div id="tipo_soli"></div>
-                        {% comment %}  {% endcomment %}
+                        <input class="btn btn-primary" type="submit" name="Enviar" value="Enviar">
                     </form>
             </div>
             <div class="modal-footer">
+<<<<<<< HEAD
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar Sección</button>
             <input class="btn btn-primary" type="submit" name="Enviar" value="Enviar">
+=======
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+>>>>>>> a4bd53e47547b60365aa098378a0a5e92fa51634
             </div>
             </div>
         </div>

@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
-from usuarios.forms import RegisterForm, UserProfileForm
+from usuarios.forms import RegisterForm, RolForm, DocForm, TipoSoliForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from usuarios.models import Rol,Solicitud, UserProfile, Detallesolicitud, Tipodocumento, TipoSolicitud, Municipios, Departamentos, Poblados
 from django.urls import reverse
 from django.contrib.auth.models import User
+from datetime import datetime 
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def inicio_usuarios(request):
 def registro(request):
     if request.method == 'POST':
         register_form = RegisterForm(request.POST)
-        userprofile_form = UserProfileForm(request.POST)
+        userprofile_form = RolForm(request.POST)
         if register_form.is_valid() and userprofile_form.is_valid():
             user = register_form.save()
             user_profile = userprofile_form.save(commit=False)
@@ -28,7 +29,7 @@ def registro(request):
             return redirect('inicio_usuarios')
     else:
         register_form = RegisterForm()
-        userprofile_form = UserProfileForm()
+        userprofile_form = RolForm()
     roles = Rol.objects.all()
     return render(request, 'users/registro.html', {
         'title': 'Registro',
@@ -79,46 +80,59 @@ def usuario(request, numeroiden, correo):
     })
 def crearsoli_usuario(request):
     if request.method == 'POST':
-            # Obtener los datos del formulario
-            cod_dpto = request.POST.get('cod_dpto')
-            cod_municipio = request.POST.get('cod_municipio')
-            cod_poblado = request.POST.get('cod_poblado')
-            descripcion = request.POST.get('descripcion')
-            direccion = request.POST.get('direccion')
-            id_tipodoc = request.POST.get('id_doc')  # Tipo de documento del usuario
-            id_tiposolicitud = request.POST.get('id_tiposolicitud')
-            fecha_inicio = request.POST.get('fecha_inicio')
-            archivo = request.FILES.get('archivo')
-            id_programaformacion = request.POST.get('id_programaformacion')
-
-            # Crear instancias de los modelos y asignar los valores
-            userprofile = UserProfile.objects.create(
+        # Crear el formulario de registro de usuario
+        # USUARIO
+        register_form = RegisterForm(request.POST)
+        docform = DocForm(request.POST)
+        tiposoli = TipoSoliForm(request.POST)
+        direccion = request.POST.get('direccion')
+        cod_dpto = request.POST.get('cod_dpto')
+        cod_municipio = request.POST.get('cod_municipio')
+        cod_poblado = int(request.POST.get('cod_poblado'))
+        # SOLICITUD
+        descripcion = request.POST.get('descripcion')
+        fecha_inicio_str = request.POST.get('fecha_inicio')
+        fecha_inicio = datetime.strptime(fecha_inicio_str, '%Y-%m-%d')
+        archivo = request.FILES['archivo']
+        if register_form.is_valid() and docform.is_valid() and tiposoli.is_valid():
+            #user 
+            user = register_form.save()
+            doc_form = docform.save(commit=False)
+            tipo_soli=tiposoli.save(commit=False)
+            #Detalle Solicitud
+            detalle_soli, created = Detallesolicitud.objects.get_or_create(
+                id_tiposolicitud = tiposoli.cleaned_data['id_tiposolicitud'],
+                descripcion = descripcion,
+                fecha_inicio = fecha_inicio,
+                archivo = archivo,
+            )
+            #Perfil de Usuario
+            departamento = Departamentos.objects.get(cod_dpto=cod_dpto)
+            municipio = Municipios.objects.get(cod_municipio=cod_municipio)
+            poblado = Poblados.objects.get(cod_poblado=cod_poblado)
+            user_profile, created = UserProfile.objects.get_or_create(
                 user=user,
-                cod_dpto=cod_dpto,
-                cod_municipio=cod_municipio,
-                cod_poblado=cod_poblado,
-                direccion=direccion,
-                id_doc=id_tipodoc,  # Asignar el tipo de documento
+                
             )
-            if userprofile.id_doc == 3:
-                userprofile.id_rol = 4
-            userprofile.save()
-
-            detallesolicitud = Detallesolicitud.objects.create(
-                id_tiposolicitud=id_tiposolicitud,
-                descripcion=descripcion,
-                fecha_inicio=fecha_inicio,
-                archivo=archivo,
-                id_programaformacion=id_programaformacion,
-            )
-            detallesolicitud.save()
-            Solicitud = Solicitudes.objects.create(
-                user=user
-            )
-
-            return render(request, 'users/login.html')
+            user_profile.id_doc = docform.cleaned_data['id_doc']
+            user_profile.direccion = direccion
+            user_profile.cod_dpto = departamento
+            user_profile.cod_municipio = municipio
+            user_profile.cod_poblado = poblado
+            # if user_profile.id_doc == 3:
+            #     user_profile.id_rol = 4
+            #     user_profile.save()
+            # GUARDAR DATOS
+            user_profile.save()
+            detalle_soli.save()
+        else:
+            register_form = RegisterForm()
+            docform = DocForm()
+            tiposoli = TipoSoliForm()
     else:
         register_form = RegisterForm()
+        docform = DocForm()
+        tiposoli = TipoSoliForm()
     detallesolicitud = Detallesolicitud.objects.all()
     tiposoli = TipoSolicitud.objects.all()
     tipodoc = Tipodocumento.objects.all()

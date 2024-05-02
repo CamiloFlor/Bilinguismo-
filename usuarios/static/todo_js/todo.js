@@ -6,7 +6,7 @@ function MostrarTipo_soli() {
         case "1":
             tipo_soliDiv.innerHTML = `
             <label for="fecha_inicio">Fecha de Inicio</label><br>
-                <input type="datetime-local" name="fecha_ini" id="fecha_ini"><br>
+                <input type="date" name="fecha_inicio" id="fecha_inicio"><br>
                 <label for="archivo">Archivo</label><br>
                 <input type="file" name="archivo" id="archivo"><br>
                         `;
