@@ -21,13 +21,6 @@ def noticias(request):
 
 
 
-def editar_noticia(request, id):
-    noticia = get_object_or_404(Detallesolicitud, pk=id)
-
-    return render(request, 'editar_noticia.html', {'form': form})
-
-
-
 
 
 
@@ -37,7 +30,3 @@ def actualizarperfil(request) :
 
 
 
-
-def registro_coordinacion(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
