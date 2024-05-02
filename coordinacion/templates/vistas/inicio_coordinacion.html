@@ -1,504 +1,276 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta   name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Bootstrap News Template - Free HTML Templates" name="keywords">
+        <meta content="Bootstrap News Template - Free HTML Templates" name="description">
+    
+        <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styl.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/fonts/poppins/poppins.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        
+        <link href="{% static 'lib/slick/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/slick/slick-theme.css' %}" rel="stylesheet">
+        
+        <!-- CSS de Bootstrap -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- JavaScript de Bootstrap (jQuery debe incluirse primero) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{% static 'css/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'todo_js/todo.js' %}"></script>
+        <title>{% block tituloventana %}
+            {% endblock %}
+            - Sena-Bilinguismo</title>
+    </head>
 
-{% extends "layout/layout.html" %}
+    <body>
+        <!-- Layout principal -->
+        <div class="layout">
+            <!-- Barra lateral -->
+            <aside class="layout__aside">
+                <!-- Información general del usuario -->
+                        <body>
+                            <nav>
+                                <ul>
 
-{% block tituloventana %} {{tituloventana}} {% endblock  %}
-{% block titulo %}INICIO{% endblock  %}
-{% block content %}
+
+                                    <li>
+                                        
+                                        <a href="https://oferta.senasofiaplus.edu.co/sofia-oferta/" class="logo">
+                                            <img src="{% static "img/logo/b-team.jpeg" %} " />
+                                            
+                                            SENA<span class="text-danger" >Bilinguismo</span>
+                                        </a>
 
 
-<h1 class="inicio__titulo">Panel Administración</h1>
+                                    </li>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h2 class="card-title">Noticias Recientes</h2>
-                    {% for noticia in noticias %}
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ noticia.titulo }}</h5>
-                            <p class="card-text">{{ noticia.contenido }}</p>
-                            <p class="card-text"><strong>Categoría:</strong> {{ noticia.categoria }}</p>
-                            <p class="card-text"><strong>Autor:</strong> {{ noticia.autor }}</p>
-                            <p class="card-text"><strong>Fecha de Publicación:</strong> {{ noticia.fecha_publicacion }}</p>
-                            <p class="card-text"><small class="text-muted">Última Actualización: {{ noticia.fecha_actualizacion }}</small></p>
-                            <!-- Agrega más campos aquí según sea necesario -->
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <a href="#" class="btn btn-primary">Crear Noticia</a>
-                    <a href="#" class="btn btn-primary">Listar Noticias</a>
-                    <a href="#" class="btn btn-primary">Editar Noticia</a>
-                    <a href="#" class="btn btn-primary">Eliminar Noticia</a>
-                </div>
-            </div>
-        </div>
+                                    {% if user.is_authenticated %}
+                                    <p>Nombre Rol: {{ user.userprofile.id_rol.nombre }}</p>
+
+                                    {% else %}
+                                    <p>No has iniciado sesión.</p>
+                                    {% endif %}
+
+
+                                    <li>
+                                        <a href="{% url 'inicio_usuarios' %}" >
+                                        <i class="fas fa-home"></i>
+                                        <span class="nav-item">noticias todos los usuarios</span>
+                                        </a>
+                                    </li>
+
+                                    <li> 
+                                        <a href="{% url 'usuarios:crearsoli_usuario' %}">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">Solicitud usuarios general </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{% url 'inicio_usuarios' %}" >
+                                        <i class="fas fa-home"></i>
+                                        <span class="nav-item">instructores todos los usuarios  </span>
+                                        </a>
+                                    </li>
+
+
+
+
+
+
+                                    {% if request.user.is_authenticated %}
+
+                                    {% if user.userprofile.id_rol.id_rol == 1%}
+                                    <li> 
+                                        <a href="">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">solo para el APRENDIZ 1 </span>
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">solo para el APRENDIZ 2</span>
+                                        </a>
+                                    </li>
+                                    <li> 
+                                        <a href="">
+                                        <i class="fas fa-user"></i>
+                                        <span class="nav-item">solo para el APRENDIZ 3 </span>
+                                        </a>
+                                    </li>
+
+
+                                        {% endif %}
+                                        {% if user.userprofile.id_rol.id_rol == 2%}
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">solo para el INSTRUCTOR  1 </span>
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">solo para el INSTRUCTOR  2 </span>
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">solo para el INSTRUCTOR  3 </span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        {% if user.userprofile.id_rol.id_rol == 3%}
+
+
+
+
+
+                                            <li> 
+                                                <a href="{% url 'coordinacion:inicio_coordinacion' %}">
+
+                                                <i class="fas fa-user"></i>
+                                                <span class="nav-item">Panel de Administrador</span>
+                                                    
+                                                </a>
+
+                                            </li>
+
+
+                                            
+                                            <li> 
+                                                <a href="{% url 'coordinacion:noticias' %}">
+                                                <i class="fas fa-user"></i>
+                                                <span class="nav-item">Crear Noticias Administrador </span>
+                                                </a>
+                                            </li>
+
+                                            <li> 
+                                                <a href="{% url 'coordinacion:actualizarperfil' %}">
+                                                <i class="fas fa-user"></i>
+                                                <span class="nav-item">actuaizar perfil Admnistrador</span>
+                                                </a>
+                                            </li>
+
+                                            
+                                        {% endif %}
+
+
+
+
+
+
+                                    {% else %}
+                                        <li> 
+                                            <a href="{% url 'usuarios:crearsoli_usuario' %}">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item">seccion para empresas </span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+
+
+                                    {% if request.user.is_authenticated %}
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item"> CURSOS DE INGLES </span>
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item"> para usuarios registrados 2</span>
+                                            </a>
+                                        </li>
+                                        <li> 
+                                            <a href="">
+                                            <i class="fas fa-user"></i>
+                                            <span class="nav-item"> para usuarios registrados 3</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{% url 'usuarios:logout' %}" class="logout">
+                                            <i class="fas fa-sing-out-alt"></i>
+                                            <span class="nav-item">boton cerrar seccion </span>
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="#">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="nav-item">sin autenticar general 1 </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="nav-item">sin autenticar  general 2 </span>
+                                            </a>
+                                        </li>
+
+                                        
+                                        <li>
+                                            <a href="#">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="nav-item">sin autenticar general 3 </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'usuarios:login_user' %}">
+                                            <i class="fas fa-question-circle"></i>
+                                            <span class="nav-item">Iniciar Sesion</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </body>  
+            </aside>
+    <!--layout principal-->
+
+        <main class="layout__content">
+            <section class="content__page">
+                {% block content %} {% endblock %}
+            </section>
+        </main>
     </div>
-</div>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                        <h2 class="card-title">Solicitudes Recientes</h2>
-                                        {% for solicitud in solicitudes %}
-                                        <div class="card mb-3">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Solicitud #{{ solicitud.id }}</h5>
-                                                <p class="card-text"><strong>Descripción:</strong> {{ solicitud.descripcion }}</p>
-                                                <p class="card-text"><strong>Estado:</strong> {{ solicitud.estado }}</p>
-                                                <p class="card-text"><strong>Autor:</strong> {{ solicitud.autor }}</p>
-                                                <p class="card-text"><strong>Fecha de Publicación:</strong> {{ solicitud.fecha_publicacion }}</p>
-                                                <p class="card-text"><strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}</p>
-                                                <p class="card-text"><strong>Fecha de Última Actualización:</strong> {{ solicitud.fecha_actualizacion }}</p>
-                                                <p class="card-text"><strong>Tipo de Solicitud:</strong> {{ solicitud.tipo }}</p>
-                                                <p class="card-text"><strong>Prioridad:</strong> {{ solicitud.prioridad }}</p>
-                                                <p class="card-text"><strong>Departamento:</strong> {{ solicitud.departamento }}</p>
-                                                <!-- Agrega más campos aquí según sea necesario -->
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-                                        <a href="#" class="btn btn-primary">Crear Solicitud</a>
-                                        <a href="#" class="btn btn-primary">Listar Solicitudes</a>
-                                        <a href="#" class="btn btn-primary">Editar Solicitudes</a>
-                                        <a href="#" class="btn btn-primary">Eliminar Solicitudes</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+    
 
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static "lib/easing/easing.min.js" %}"></script>
+    <script src="{% static "lib/slick/slick.min.js" %}"></script>
 
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h2>Panel de Administración</h2>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Usuarios</h5>
-                                            <p class="card-text">Administra los usuarios del sistema.</p>
-                                            <a href="" class="btn btn-primary">Administrar Usuarios</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Roles</h5>
-                                            <p class="card-text">Administra los roles y permisos del sistema.</p>
-                                            <a href="" class="btn btn-primary">Administrar Roles</a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Agrega más secciones de gestión según sea necesario -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <h2 class="text-center mb-4">Panel de Administración</h2>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Categorías</h5>
-                                            <p class="card-text">Administra las categorías de noticias en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Categorías</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Departamentos</h5>
-                                            <p class="card-text">Administra los departamentos en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Departamentos</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Municipios</h5>
-                                            <p class="card-text">Administra los municipios en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Municipios</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Poblados</h5>
-                                            <p class="card-text">Administra los poblados en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Poblados</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Programas de Formación</h5>
-                                            <p class="card-text">Administra los programas de formación en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Programas de Formación</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Fichas</h5>
-                                            <p class="card-text">Administra las fichas en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Fichas</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Resultados de Aprendizaje</h5>
-                                            <p class="card-text">Administra los resultados de aprendizaje en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Resultados de Aprendizaje</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de MCER</h5>
-                                            <p class="card-text">Administra el Marco Común Europeo de Referencia en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar MCER</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Modalidades</h5>
-                                            <p class="card-text">Administra las modalidades de formación en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Modalidades</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Niveles de Formación</h5>
-                                            <p class="card-text">Administra los niveles de formación en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Niveles de Formación</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Competencias</h5>
-                                            <p class="card-text">Administra las competencias en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Competencias</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Tipos de Documento</h5>
-                                            <p class="card-text">Administra los tipos de documento en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Tipos de Documento</a>
-                                        </div>
-                                    </div>
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Estados X Instrucción</h5>
-                                            <p class="card-text">Administra los estados por instrucción en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Estados X Instrucción</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-4">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Gestión de Calificaciones</h5>
-                                            <p class="card-text">Administra las calificaciones en el sistema.</p>
-                                            <a href="#" class="btn btn-primary">Administrar Calificaciones</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-             
-
-
-                        <div class="container">
-                            <div class="row">
-                                <!-- Panel de Permisos para Aprendiz -->
-                                <div class="col-md-6">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h2>Panel de Permisos para usuario sin AUTENTICAR</h2>
-                                            <h5 class="card-title">Habilitar/Inhabilitar Funciones</h5>
-                                            <p class="card-text">Administra las funciones disponibles para los aprendices.</p>
-                                            <!-- Lista de funciones con interruptores para habilitar/deshabilitar -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearUsuario">
-                                                <label class="form-check-label" for="crearUsuario">Crear su usuario</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesUsuario">
-                                                <label class="form-check-label" for="verDetallesUsuario">Ver detalles de usuarios</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                        
-                                            <!-- Funciones de Gestión de Competencias -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarCompetencia">
-                                                <label class="form-check-label" for="editarCompetencia">Editar competencias existentes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarCompetencia">
-                                                <label class="form-check-label" for="asociarCompetencia">Asociar competencias a programas de formación</label>
-                                            </div>
-                                            <!-- Funciones de Gestión de Solicitudes -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearSolicitud">
-                                                <label class="form-check-label" for="crearSolicitud">Crear nuevas solicitudes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesSolicitud">
-                                                <label class="form-check-label" for="verDetallesSolicitud">Ver detalles de las solicitudes</label>
-                                            </div>
-                                            <!-- Funciones de Gestión de Programas de Formación -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarProgramaFormacion">
-                                                <label class="form-check-label" for="eliminarProgramaFormacion">Listar programas de formación</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarProgramaFormacion">
-                                                <label class="form-check-label" for="asociarProgramaFormacion">Consultar programas de formación con competencias y otros detalles</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                                            <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <!-- Panel de Permisos para Instructor -->
-                                <div class="col-md-6">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h2>Panel de Permisos para Instructor</h2>
-                                            <h5 class="card-title">Habilitar/Inhabilitar Funciones</h5>
-                                            <p class="card-text">Administra las funciones disponibles para los instructores.</p>
-                                            <!-- Lista de funciones con interruptores para habilitar/deshabilitar -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarUsuario">
-                                                <label class="form-check-label" for="editarUsuario">Editar su usuario</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesUsuario">
-                                                <label class="form-check-label" for="verDetallesUsuario">Ver detalles de usuarios</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                        
-                                            <!-- Funciones de Gestión de Roles -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearRol">
-                                                <label class="form-check-label" for="crearRol">Ver roles</label>
-                                            </div>
-                        
-                                            <!-- Funciones de Gestión de Competencias -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearCompetencia">
-                                                <label class="form-check-label" for="crearCompetencia">Listar nuevas competencias</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarCompetencia">
-                                                <label class="form-check-label" for="asociarCompetencia">Listar competencias y programas de formación</label>
-                                            </div>
-                                            <!-- Funciones de Gestión de Solicitudes -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearSolicitud">
-                                                <label class="form-check-label" for="crearSolicitud">Crear nuevas solicitudes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="revisarSolicitud">
-                                                <label class="form-check-label" for="revisarSolicitud">Revisar solicitudes pendientes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesSolicitud">
-                                                <label class="form-check-label" for="verDetallesSolicitud">Ver detalles de las solicitudes</label>
-                                            </div>
-                                            <!-- Funciones de Gestión de Programas de Formación -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearProgramaFormacion">
-                                                <label class="form-check-label" for="crearProgramaFormacion">Consultar nuevos programas de formación</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                                            <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <!-- Panel de Permisos para Coordinador -->
-                                <div class="col-md-6">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h2>Panel de Permisos para Coordinador</h2>
-                                            <h5 class="card-title">Habilitar/Inhabilitar Funciones</h5>
-                                            <p class="card-text">Administra las funciones disponibles para los coordinadores.</p>
-                                            <!-- Lista de funciones con interruptores para habilitar/deshabilitar -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarUsuario">
-                                                <label class="form-check-label" for="editarUsuario">Editar su usuario</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesUsuario">
-                                                <label class="form-check-label" for="verDetallesUsuario">Ver detalles de usuarios</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                        
-                                            <!-- Funciones de Gestión de Roles -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearRol">
-                                                <label class="form-check-label" for="crearRol">Listar roles</label>
-                                            </div>
-                        
-                                            <!-- Funciones de Gestión de Competencias -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearCompetencia">
-                                                <label class="form-check-label" for="crearCompetencia">Crear nuevas competencias</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarCompetencia">
-                                                <label class="form-check-label" for="editarCompetencia">Editar competencias existentes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarCompetencia">
-                                                <label class="form-check-label" for="eliminarCompetencia">Eliminar competencias</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarCompetencia">
-                                                <label class="form-check-label" for="asociarCompetencia">Asociar competencias a programas de formación</label>
-                                            </div>
-                                            <!-- Funciones de Gestión de Solicitudes -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearSolicitud">
-                                                <label class="form-check-label" for="crearSolicitud">Crear nuevas solicitudes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="revisarSolicitud">
-                                                <label class="form-check-label" for="revisarSolicitud">Revisar solicitudes pendientes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesSolicitud">
-                                                <label class="form-check-label" for="verDetallesSolicitud">Ver detalles de las solicitudes</label>
-                                            </div>
-                                            <!-- Funciones de Gestión de Programas de Formación -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarProgramaFormacion">
-                                                <label class="form-check-label" for="eliminarProgramaFormacion">Listar programas de formación</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarProgramaFormacion">
-                                                <label class="form-check-label" for="asociarProgramaFormacion">Asociar programas de formación con competencias y otros detalles</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                                            <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <!-- Panel de Permisos dentro del sistema para Coordinador -->
-                                <div class="col-md-6">
-                                    <div class="card mb-3">
-                                        <div class="card-body">
-                                            <h2>Panel de Permisos EN FUNCIONES DENTRO DEL SISTEMA PARA COORDINADOR</h2>
-                                            <h5 class="card-title">Habilitar/Inhabilitar Funciones</h5>
-                                            <p class="card-text">Administra las funciones disponibles para la gestión de usuarios.</p>
-                                            <!-- Lista de funciones con interruptores para habilitar/deshabilitar -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearUsuario">
-                                                <label class="form-check-label" for="crearUsuario">Crear usuarios</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarUsuario">
-                                                <label class="form-check-label" for="editarUsuario">Editar usuarios</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarUsuario">
-                                                <label class="form-check-label" for="eliminarUsuario">Eliminar usuarios</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesUsuario">
-                                                <label class="form-check-label" for="verDetallesUsuario">Ver detalles de usuarios</label>
-                                            </div>
-                                            <!-- Agrega más funciones según sea necesario -->
-                        
-                                            <!-- Funciones de Gestión de Roles -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearRol">
-                                                <label class="form-check-label" for="crearRol">Crear roles</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asignarRol">
-                                                <label class="form-check-label" for="asignarRol">Asignar roles a usuarios</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="modificarRol">
-                                                <label class="form-check-label" for="modificarRol">Modificar roles</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarRol">
-                                                <label class="form-check-label" for="eliminarRol">Eliminar roles</label>
-                                            </div>
-                        
-                                            <!-- Funciones de Gestión de Competencias -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearCompetencia">
-                                                <label class="form-check-label" for="crearCompetencia">Crear nuevas competencias</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarCompetencia">
-                                                <label class="form-check-label" for="editarCompetencia">Editar competencias existentes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarCompetencia">
-                                                <label class="form-check-label" for="eliminarCompetencia">Eliminar competencias</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarCompetencia">
-                                                <label class="form-check-label" for="asociarCompetencia">Asociar competencias a programas de formación</label>
-                                            </div>
-                        
-                                            <!-- Funciones de Gestión de Solicitudes -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearSolicitud">
-                                                <label class="form-check-label" for="crearSolicitud">Crear nuevas solicitudes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="revisarSolicitud">
-                                                <label class="form-check-label" for="revisarSolicitud">Revisar solicitudes pendientes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="aprobarSolicitud">
-                                                <label class="form-check-label" for="aprobarSolicitud">Aprobar o rechazar solicitudes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="verDetallesSolicitud">
-                                                <label class="form-check-label" for="verDetallesSolicitud">Ver detalles de las solicitudes</label>
-                                            </div>
-                        
-                                            <!-- Funciones de Gestión de Programas de Formación -->
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="crearProgramaFormacion">
-                                                <label class="form-check-label" for="crearProgramaFormacion">Crear nuevos programas de formación</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="editarProgramaFormacion">
-                                                <label class="form-check-label" for="editarProgramaFormacion">Editar programas de formación existentes</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="eliminarProgramaFormacion">
-                                                <label class="form-check-label" for="eliminarProgramaFormacion">Eliminar programas de formación</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="asociarProgramaFormacion">
-                                                <label class="form-check-label" for="asociarProgramaFormacion">Asociar programas de formación con competencias y otros detalles</label>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary mt-3">Guardar Cambios</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-{% endblock %}
+    <!-- Template Javascript -->
+    <script src="{% static "js/main.js" %} "></script>
+</body>
+</html>
