@@ -58,13 +58,18 @@
 
                                     {% if user.is_authenticated %}
                                     <p>Nombre Rol: {{ user.userprofile.id_rol.nombre }}</p>
-                                  
+
                                     {% else %}
                                     <p>No has iniciado sesión.</p>
                                     {% endif %}
 
 
-
+                                    <li>
+                                        <a href="{% url 'inicio_usuarios' %}" >
+                                        <i class="fas fa-home"></i>
+                                        <span class="nav-item">noticias todos los usuarios</span>
+                                        </a>
+                                    </li>
 
                                     <li> 
                                         <a href="{% url 'usuarios:crearsoli_usuario' %}">
@@ -72,18 +77,16 @@
                                         <span class="nav-item">Solicitud usuarios general </span>
                                         </a>
                                     </li>
+
                                     <li>
                                         <a href="{% url 'inicio_usuarios' %}" >
                                         <i class="fas fa-home"></i>
-                                        <span class="nav-item">noticias todos los usuarios</span>
+                                        <span class="nav-item">instructores todos los usuarios  </span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="{% url 'inicio_usuarios' %}" >
-                                        <i class="fas fa-home"></i>
-                                        <span class="nav-item">intructores todos los usuarios  </span>
-                                        </a>
-                                    </li>
+
+
+
 
 
 
@@ -132,35 +135,42 @@
                                         </li>
                                         {% endif %}
                                         {% if user.userprofile.id_rol.id_rol == 3%}
+
                                             <li> 
-                                                <a href="">
+                                                <a href="{% url 'coordinacion:inicio_coordinacion' %}">
+
                                                 <i class="fas fa-user"></i>
-                                                <span class="nav-item">solo para el coordinador 1 </span>
+                                                <span class="nav-item">Panel de Administrador</span>
+                                                    
                                                 </a>
+
                                             </li>
+
+
+                                            
                                             <li> 
-                                                <a href="">
+                                                <a href="{% url 'coordinacion:noticias' %}">
                                                 <i class="fas fa-user"></i>
-                                                <span class="nav-item">solo para el coordinador 2 </span>
+                                                <span class="nav-item">Crear Noticias Administrador </span>
                                                 </a>
                                             </li>
 
                                             <li> 
-                                                <a href="">
+                                                <a href="{% url 'coordinacion:actualizarperfil' %}">
                                                 <i class="fas fa-user"></i>
-                                                <span class="nav-item">solo para el coordinador 3 </span>
+                                                <span class="nav-item">actuaizar perfil Admnistrador</span>
                                                 </a>
                                             </li>
 
+                                            
                                         {% endif %}
-
 
 
                                     {% else %}
                                         <li> 
                                             <a href="{% url 'usuarios:crearsoli_usuario' %}">
                                             <i class="fas fa-user"></i>
-                                            <span class="nav-item">Solicitud bolsa coorporativa </span>
+                                            <span class="nav-item">seccion para empresas </span>
                                             </a>
                                         </li>
                                     {% endif %}
@@ -171,7 +181,7 @@
                                         <li> 
                                             <a href="">
                                             <i class="fas fa-user"></i>
-                                            <span class="nav-item"> para usuarios registrados 1</span>
+                                            <span class="nav-item"> CURSOS DE INGLES </span>
                                             </a>
                                         </li>
                                         <li> 
@@ -206,6 +216,8 @@
                                             <span class="nav-item">sin autenticar  general 2 </span>
                                             </a>
                                         </li>
+
+                                        
                                         <li>
                                             <a href="#">
                                             <i class="fas fa-question-circle"></i>
@@ -232,6 +244,7 @@
         </main>
     </div>
 
+    
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

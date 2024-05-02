@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from usuarios import views
+
 app_name = 'usuarios'
 urlpatterns=[
     path('Login/', views.login_user, name="login_user"),
@@ -10,4 +11,9 @@ urlpatterns=[
     path('get_municipios/', views.get_municipios, name="municipios"),
     path('get_poblados/', views.get_poblados, name="poblados"),
     path('Solicitud-eliminar/<int:id_detallesolicitud>', views.eliminartiposoli_usuario, name="eliminartiposoli_usuario"),
+ 
+    
 ]
+
+
+
