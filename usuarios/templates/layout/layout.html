@@ -68,27 +68,27 @@
                         <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
                         <li>
                             <a href="{% url 'inicio_usuarios' %}">
-                                <i class="fas fa-home"></i> <!-- Icono de casa -->
+                                <i class="fas fa-newspaper"></i> <!-- Icono de periódico -->
                                 <!-- Texto para mostrar noticias a todos los usuarios -->
-                                <span class="nav-item">noticias todos los usuarios</span>
+                                <span class="nav-item"> Noticias Todos los Usuarios</span>
                             </a>
                         </li>
 
                         <!-- Elemento de lista con un enlace para crear una solicitud de usuario -->
                         <li> 
                             <a href="{% url 'usuarios:crearsoli_usuario' %}">
-                                <i class="fas fa-user"></i> <!-- Icono de usuario -->
+                                <i class="fas fa-clipboard-list"></i> <!-- Icono de lista de tareas -->
                                 <!-- Texto para crear solicitud de usuarios generales -->
-                                <span class="nav-item">Solicitud usuarios general</span>
+                                <span class="nav-item">Solicitud Usuarios General</span>
                             </a>
                         </li>
 
                         <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
                         <li>
                             <a href="{% url 'inicio_usuarios' %}">
-                                <i class="fas fa-home"></i> <!-- Icono de casa -->
-                                <!-- Texto para mostrar noticias a todos los instructores -->
-                                <span class="nav-item">instructores todos los usuarios</span>
+                    
+                                <i class="fas fa-chalkboard-teacher"></i> <!-- Icono de profesor -->
+                                <span class="nav-item">Instructores Bilinguismo </span>
                             </a>
                         </li>
 
@@ -169,8 +169,8 @@
                                             <!-- Elemento de lista -->
                                             <a href="{% url 'coordinacion:inicio_coordinacion' %}">
                                                 <!-- Enlace dinámico que apunta a la URL 'coordinacion:inicio_coordinacion' -->
-                                                <i class="fas fa-user"></i>
-                                                <!-- Icono de usuario -->
+                                                <i class="fas fa-users-cog"></i> <!-- Icono de configuración de usuarios -->
+                                               
                                                 <span class="nav-item">Panel de Administrador</span>
                                                 <!-- Texto indicando "Panel de Administrador" -->
                                             </a>
@@ -181,8 +181,7 @@
                                                 <!-- Elemento de lista -->
                                                 <a href="{% url 'coordinacion:noticias' %}">
                                                     <!-- Enlace dinámico que apunta a la URL 'coordinacion:noticias' -->
-                                                    <i class="fas fa-user"></i>
-                                                    <!-- Icono de usuario -->
+                                                    <i class="fas fa-bullhorn"></i> <!-- Icono de megáfono -->
                                                     <span class="nav-item">Crear Noticias Administrador </span>
                                                     <!-- Texto indicando "Crear Noticias Administrador" -->
                                                 </a>
@@ -191,9 +190,8 @@
                                                 <!-- Otro elemento de lista -->
                                                 <a href="{% url 'coordinacion:actualizarperfil' %}">
                                                     <!-- Enlace dinámico que apunta a la URL 'coordinacion:actualizarperfil' -->
-                                                    <i class="fas fa-user"></i>
-                                                    <!-- Icono de usuario -->
-                                                    <span class="nav-item">actuaizar perfil Admnistrador</span>
+                                                    <i class="fas fa-user-cog"></i> <!-- Icono de configuración de usuario -->
+                                                    <span class="nav-item">Actuaizar Perfil Admnistrador</span>
                                                     <!-- Texto indicando "actuaizar perfil Admnistrador" -->
                                                 </a>
                                             </li>
@@ -201,9 +199,8 @@
                                                 <!-- Otro elemento de lista -->
                                                 <a href="{% url 'coordinacion:gestiondepermisos' %}">
                                                     <!-- Enlace dinámico que apunta a la URL 'coordinacion:actualizarperfil' -->
-                                                    <i class="fas fa-user"></i>
-                                                    <!-- Icono de usuario -->
-                                                    <span class="nav-item">Gestión de Permisos Administrador</span>
+                                                    <i class="fas fa-user-lock"></i> <!-- Icono de usuario con candado -->
+                                                    <span class="nav-item">Gestión De Permisos Administrador</span>
                                                     <!-- Texto indicando "Gestión de Permisos Administrador" -->
                                                 </a>
                                             </li>
@@ -215,12 +212,17 @@
 
 
                                     {% else %}
+                              <!-- Comienza un elemento de lista -->
                                         <li> 
+                                            <!-- Define un enlace con una URL dinámica -->
                                             <a href="{% url 'usuarios:crearsoli_usuario' %}">
-                                            <i class="fas fa-user"></i>
-                                            <span class="nav-item">seccion para empresas </span>
+                                                <!-- Icono de Font Awesome que representa una industria -->
+                                                <i class="fas fa-industry"></i>
+                                                <!-- Texto que indica "seccion para empresas" -->
+                                                <span class="nav-item">Sección para Empresas</span>
                                             </a>
-                                        </li>
+                                        </li> <!-- Fin del elemento de lista -->
+
                                     {% endif %}
 
 
@@ -230,9 +232,8 @@
                                         <!-- Elemento de lista -->
                                         <a href="">
                                             <!-- Enlace sin destino especificado -->
-                                            <i class="fas fa-user"></i>
-                                            <!-- Icono de usuario -->
-                                            <span class="nav-item"> PROGRAMAS DE FORMACION EN INGLES </span>
+                                            <i class="fas fa-book-open"></i> <!-- Icono de libro abierto -->
+                                            <span class="nav-item"> PROGRAMAS DE FORMACION EN INGLES</span>
                                             <!-- Texto indicando "CURSOS DE INGLES" -->
                                         </a>
                                     </li>
@@ -269,8 +270,9 @@
                                         {% else %}
                                     <li> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
                                         <a href="#"> <!-- Define un enlace con un marcador de posición "#" -->
-                                            <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
-                                            <span class="nav-item">Programas de forcacion en ingles (GENERAL) </span> <!-- Texto del menú de navegación -->
+                                            <i class="fas fa-graduation-cap"></i>
+
+                                            <span class="nav-item">PROGRAMAS DE FORMACION EN INGLES (GENERAL) </span> <!-- Texto del menú de navegación -->
                                         </a> <!-- Fin del enlace -->
                                     </li> <!-- Fin del elemento de lista -->
                                     
