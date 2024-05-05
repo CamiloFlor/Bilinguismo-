@@ -134,7 +134,7 @@ class Solicitud(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     id_tpestado = models.ForeignKey('Tpestado', models.DO_NOTHING, db_column='id_tpestado', blank=True, null=True)
     fecha_creacion = models.DateTimeField(blank=True, null=True)
-    id_detallesolicitud = models.ForeignKey('Detallesolicitud', models.DO_NOTHING, db_column='id_detallesolicitud', blank=True, null=True)
+    id_detallesolicitud = models.ForeignKey('Detallesolicitud', db_column='id_detallesolicitud', on_delete=models.CASCADE, blank=True, null=True)
     id_calificacion = models.ForeignKey(Calificacion, models.DO_NOTHING, db_column='id_calificacion', blank=True, null=True)
 
     class Meta:
@@ -163,7 +163,7 @@ class Detallesolicitud(models.Model):
     id_detallesolicitud = models.AutoField(primary_key=True)
     id_tiposolicitud = models.ForeignKey(TipoSolicitud, models.DO_NOTHING, db_column='id_tiposolicitud', blank=True, null=True)
     descripcion = models.CharField(max_length=250, blank=True, null=True)
-    archivo = models.FileField(upload_to='archivos_soli/')
+    archivo = models.FileField(upload_to='archivos_soli/',blank=True, null=True)
     url = models.CharField(max_length=250, blank=True, null=True)
     imagen = models.TextField(db_column='Imagen', blank=True, null=True)  # Field name made lowercase.
     fecha_fin = models.DateTimeField(blank=True, null=True)

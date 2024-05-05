@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
-from django.contrib.auth.forms import UserCreationForm
 from usuarios.forms import RegisterForm, RolForm, DocForm, TipoSoliForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -16,6 +15,20 @@ def inicio_usuarios(request):
     return render(request, 'vistas/inicio.html',{
         'tituloventana': "Inicio"
     })
+def get_municipios(request):
+    if request.method == 'GET' and 'departamento' in request.GET:
+        departamento = request.GET['departamento']
+        municipios = Municipios.objects.filter(cod_dpto=departamento).values('cod_municipio', 'nombre_municipio')
+        return JsonResponse(list(municipios), safe=False)
+    else:
+        return JsonResponse({'error': 'Se requiere un parámetro "departamento" '}, status=400)
+def get_poblados(request):
+    if request.method == 'GET' and 'municipios' in request.GET:
+        municipios = request.GET['municipios']
+        poblado = Poblados.objects.filter(cod_municipio=municipios).values('cod_poblado', 'nombre_poblado')
+        return JsonResponse(list(poblado), safe=False)
+    else:
+        return JsonResponse({'error': 'Se requiere un parámetro "Municipio" '}, status=400)
 def registro(request):
     if request.method == 'POST':
         register_form = RegisterForm(request.POST)
@@ -78,6 +91,11 @@ def usuario(request, numeroiden, correo):
     return render(request, "vistas/inicio.html",{
         'usuario' : usuario
     })
+
+#def solicitud(id_detallesolicitud, user):
+    
+
+
 def crearsoli_usuario(request):
     if request.method == 'POST':
         # Crear el formulario de registro de usuario
@@ -92,20 +110,14 @@ def crearsoli_usuario(request):
         # SOLICITUD
         descripcion = request.POST.get('descripcion')
         fecha_inicio_str = request.POST.get('fecha_inicio')
+        fecha_inicio_str = request.POST.get('fecha_inicio')
+        archivo = request.FILES.get('archivo', None)
         fecha_inicio = datetime.strptime(fecha_inicio_str, '%Y-%m-%d')
-        archivo = request.FILES['archivo']
         if register_form.is_valid() and docform.is_valid() and tiposoli.is_valid():
             #user 
             user = register_form.save()
             doc_form = docform.save(commit=False)
             tipo_soli=tiposoli.save(commit=False)
-            #Detalle Solicitud
-            detalle_soli, created = Detallesolicitud.objects.get_or_create(
-                id_tiposolicitud = tiposoli.cleaned_data['id_tiposolicitud'],
-                descripcion = descripcion,
-                fecha_inicio = fecha_inicio,
-                archivo = archivo,
-            )
             #Perfil de Usuario
             departamento = Departamentos.objects.get(cod_dpto=cod_dpto)
             municipio = Municipios.objects.get(cod_municipio=cod_municipio)
@@ -119,12 +131,29 @@ def crearsoli_usuario(request):
             user_profile.cod_dpto = departamento
             user_profile.cod_municipio = municipio
             user_profile.cod_poblado = poblado
-            # if user_profile.id_doc == 3:
-            #     user_profile.id_rol = 4
-            #     user_profile.save()
-            # GUARDAR DATOS
             user_profile.save()
+            userprofile = UserProfile.objects.get(id_userprofile=user_profile) 
+            if userprofile.id_doc == 3:
+                userprofile.id_rol = 4
+                user_profile.save()
+            #Detalle Solicitud
+            detalle_soli, created = Detallesolicitud.objects.get_or_create(
+                id_tiposolicitud = tiposoli.cleaned_data['id_tiposolicitud'],
+                descripcion = descripcion,
+                fecha_inicio = fecha_inicio,
+                archivo = archivo,
+            )
             detalle_soli.save()
+            #Solicitud(user)
+            soli, created = Solicitud.objects.create(
+            user=user,
+            id_detallesolicitud=detalle_soli
+            )
+            soli.save()
+            
+            # SOLICITUD
+            
+            
         else:
             register_form = RegisterForm()
             docform = DocForm()
@@ -144,20 +173,6 @@ def crearsoli_usuario(request):
         'tiposoli': tiposoli,
         'depto': depto
     })
-def get_municipios(request):
-    if request.method == 'GET' and 'departamento' in request.GET:
-        departamento = request.GET['departamento']
-        municipios = Municipios.objects.filter(cod_dpto=departamento).values('cod_municipio', 'nombre_municipio')
-        return JsonResponse(list(municipios), safe=False)
-    else:
-        return JsonResponse({'error': 'Se requiere un parámetro "departamento" '}, status=400)
-def get_poblados(request):
-    if request.method == 'GET' and 'municipios' in request.GET:
-        municipios = request.GET['municipios']
-        poblado = Poblados.objects.filter(cod_municipio=municipios).values('cod_poblado', 'nombre_poblado')
-        return JsonResponse(list(poblado), safe=False)
-    else:
-        return JsonResponse({'error': 'Se requiere un parámetro "Municipio" '}, status=400)
 
 def eliminartiposoli_usuario(request, id_detallesolicitud):
     detallesolicitud = Detallesolicitud.objects.get(id_detallesolicitud=id_detallesolicitud)
