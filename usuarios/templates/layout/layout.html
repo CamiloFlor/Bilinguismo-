@@ -14,7 +14,7 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-free-6.1.2-web/css/all.min.css' %}"> <!-- Archivo de estilos de Font Awesome -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> <!-- Archivo de estilos personalizado -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styl.css' %}"> <!-- Otro archivo de estilos personalizado -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"> <!-- Otro archivo de estilos personalizado -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}"> <!-- Archivo de estilos para diseño responsivo -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/news.css' %}"> <!-- Archivo de estilos para noticias -->
     <link rel="stylesheet" href="{% static 'assets/fonts/poppins/poppins.css' %}"> <!-- Archivo de estilos de la fuente Poppins -->
@@ -44,258 +44,250 @@
         <aside class="layout__aside"> <!-- Sección de la barra lateral -->
             <!-- Información general del usuario -->
             <body> <!-- Esto parece ser un error, debería ser un comentario o eliminarse -->
-                <nav> <!-- Inicio de la barra de navegación -->
-                    <ul> <!-- Lista no ordenada de elementos de navegación -->
-                        <li> <!-- Elemento de lista -->
-                            <!-- Enlace al sitio principal con la clase "logo" -->
-                            <a href="https://oferta.senasofiaplus.edu.co/sofia-oferta/" class="logo">
-                                <!-- Imagen del logo con una ruta estática -->
-                                <img src="{% static "img/logo/b-team.jpeg" %}" />
-                                <!-- Texto "SENA" con un subrayado en rojo -->
-                                SENA<span class="text-danger">Bilinguismo</span>
-                            </a>
-                        </li>
+                <nav class="layout__menu"> <!-- Inicio de la barra de navegación -->
+                    <ul class="menu__list"> <!-- Lista no ordenada de elementos de navegación -->
+                        
 
                         <!-- Verificación de si el usuario está autenticado -->
                         {% if user.is_authenticated %}
                             <!-- Si el usuario está autenticado, se muestra su rol -->
-                            <p>Nombre Rol: {{ user.userprofile.id_rol.nombre }}</p>
+                           
+                            <button  class="button-86"  onclick="location.href='{% url 'usuarios:logout' %}'">
+                                <!-- Texto del botón -->
+                                <!-- Texto del botón -->
+                                <i class="fas fa-sign-out"></i>
+                                <span >Cerrar sesión </span>
+                                <!-- Icono de "cerrar sesión" -->
+                                
+                                
+                            </button>
+                            <li class="menu__option"> <!-- Elemento de lista cabezera -->
+                                <!-- Enlace al sitio principal con la clase "logo" -->
+                                <a class="logo">
+                                    <!-- Imagen del logo con una ruta estática -->
+                                    <img src="{% static "img/logo/b-team.jpeg" %}" />
+                                    <!-- Texto  -->
+                                    <span class="menu__overlay">Bilinguismo</span>
+                                </a>
+                            </li>
+                            <p>Bienvenido: {{ user.userprofile.id_rol.nombre }}</p>
+
                         {% else %}
                             <!-- Si el usuario no está autenticado, se muestra un mensaje -->
-                            <p>No has iniciado sesión.</p>
+                            <li class="menu__option"> <!-- Elemento de lista cabezera -->
+                                <!-- Enlace al sitio principal con la clase "logo" -->
+                                <a class="logo">
+                                    <!-- Imagen del logo con una ruta estática -->
+                                    <img src="{% static "img/logo/b-team.jpeg" %}" />
+                                    <!-- Texto  -->
+                                    <span class="menu__overlay" >Bilinguismo</span>
+                                </a>
+                            </li>
+                            <button class="button-86" onclick="location.href='{% url 'usuarios:login_user' %}'">Iniciar Sección</button>
                         {% endif %}
 
                         <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
-                        <li>
-                            <a href="{% url 'inicio_usuarios' %}">
-                                <i class="fas fa-newspaper"></i> <!-- Icono de periódico -->
+                        <li class="menu__option">
+                            <a class="logo" href="{% url 'inicio_usuarios' %}">
+                                <i class="menu__icon fas fa-newspaper"></i> <!-- Icono de periódico -->
                                 <!-- Texto para mostrar noticias a todos los usuarios -->
-                                <span class="nav-item"> Noticias Todos los Usuarios</span>
+                                <span class="menu__overlay"> Noticias</span>
                             </a>
                         </li>
 
                         <!-- Elemento de lista con un enlace para crear una solicitud de usuario -->
-                        <li> 
-                            <a href="{% url 'usuarios:crearsoli_usuario' %}">
-                                <i class="fas fa-clipboard-list"></i> <!-- Icono de lista de tareas -->
+                        <li class="menu__option"> 
+                            <a class="logo" href="{% url 'usuarios:crearsoli_usuario' %}">
+                                <i class="menu__icon fas fa-clipboard-list"></i> <!-- Icono de lista de tareas -->
                                 <!-- Texto para crear solicitud de usuarios generales -->
-                                <span class="nav-item">Solicitud Usuarios General</span>
+                                <span class="menu__overlay">Solicitud </span>
                             </a>
                         </li>
 
                         <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
-                        <li>
-                            <a href="{% url 'inicio_usuarios' %}">
-                    
-                                <i class="fas fa-chalkboard-teacher"></i> <!-- Icono de profesor -->
-                                <span class="nav-item">Instructores Bilinguismo </span>
-                            </a>
-                        </li>
-
-
-
+                        
                                     {% if request.user.is_authenticated %}
                                     
-                                    {% if user.userprofile.id_rol.id_rol == 1%}
-                                    <li> 
-                                        <!-- Elemento de lista -->
-                                        <a href="">
-                                            <!-- Enlace vacío (sin URL definida) -->
-                                            <i class="fas fa-user"></i>
-                                            <!-- Icono de usuario -->
-                                            <span class="nav-item">solo para el APRENDIZ 1 </span>
-                                            <!-- Texto indicando "solo para el APRENDIZ 1" -->
-                                        </a>
-                                    </li>
-                                    <li> 
-                                        <!-- Elemento de lista -->
-                                        <a href="">
-                                            <!-- Enlace vacío (sin URL definida) -->
-                                            <i class="fas fa-user"></i>
-                                            <!-- Icono de usuario -->
-                                            <span class="nav-item">solo para el APRENDIZ 2</span>
-                                            <!-- Texto indicando "solo para el APRENDIZ 2" -->
-                                        </a>
-                                    </li>
-                                    <li> 
-                                        <!-- Elemento de lista -->
-                                        <a href="">
-                                            <!-- Enlace vacío (sin URL definida) -->
-                                            <i class="fas fa-user"></i>
-                                            <!-- Icono de usuario -->
-                                            <span class="nav-item">solo para el APRENDIZ 3 </span>
-                                            <!-- Texto indicando "solo para el APRENDIZ 3" -->
-                                        </a>
-                                    </li>
-                                    
-
-                                        {% endif %}
-                                        {% if user.userprofile.id_rol.id_rol == 2%}
-                                        <li> 
-                                            <!-- Elemento de lista -->
-                                            <a href="">
-                                                <!-- Enlace vacío (sin URL definida) -->
-                                                <i class="fas fa-user"></i>
-                                                <!-- Icono de usuario -->
-                                                <span class="nav-item">solo para el INSTRUCTOR  1 </span>
-                                                <!-- Texto indicando "solo para el INSTRUCTOR  1" -->
-                                            </a>
-                                        </li>
-                                        <li> 
-                                            <!-- Elemento de lista -->
-                                            <a href="">
-                                                <!-- Enlace vacío (sin URL definida) -->
-                                                <i class="fas fa-user"></i>
-                                                <!-- Icono de usuario -->
-                                                <span class="nav-item">solo para el INSTRUCTOR  2 </span>
-                                                <!-- Texto indicando "solo para el INSTRUCTOR  2" -->
-                                            </a>
-                                        </li>
-                                        <li> 
-                                            <!-- Elemento de lista -->
-                                            <a href="">
-                                                <!-- Enlace vacío (sin URL definida) -->
-                                                <i class="fas fa-user"></i>
-                                                <!-- Icono de usuario -->
-                                                <span class="nav-item">solo para el INSTRUCTOR  3 </span>
-                                                <!-- Texto indicando "solo para el INSTRUCTOR  3" -->
-                                            </a>
-                                        </li>
-                                        
-                                        {% endif %}
-                                        {% if user.userprofile.id_rol.id_rol == 3%}
-
-                                        <li> 
-                                            <!-- Elemento de lista -->
-                                            <a href="{% url 'coordinacion:inicio_coordinacion' %}">
-                                                <!-- Enlace dinámico que apunta a la URL 'coordinacion:inicio_coordinacion' -->
-                                                <i class="fas fa-users-cog"></i> <!-- Icono de configuración de usuarios -->
-                                               
-                                                <span class="nav-item">Panel de Administrador</span>
-                                                <!-- Texto indicando "Panel de Administrador" -->
-                                            </a>
-                                        </li>
-                                        
-
-                                            <li> 
+                                        {% if user.userprofile.id_rol.id_rol == 1%}
+                                            <li class="menu__option"> 
                                                 <!-- Elemento de lista -->
-                                                <a href="{% url 'coordinacion:noticias' %}">
-                                                    <!-- Enlace dinámico que apunta a la URL 'coordinacion:noticias' -->
-                                                    <i class="fas fa-bullhorn"></i> <!-- Icono de megáfono -->
-                                                    <span class="nav-item">Crear Noticias Administrador </span>
-                                                    <!-- Texto indicando "Crear Noticias Administrador" -->
+                                                <a class="logo">
+                                                    <!-- Enlace vacío (sin URL definida) -->
+                                                    <i class="menu__icon fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="menu__overlay">solo para el APRENDIZ 1 </span>
+                                                    <!-- Texto indicando "solo para el APRENDIZ 1" -->
                                                 </a>
                                             </li>
-                                            <li> 
+                                            <li class="menu__option">
+                                                <!-- Elemento de lista -->
+                                                <a class="logo">
+                                                    <!-- Enlace vacío (sin URL definida) -->
+                                                    <i class="menu__icon fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="menu__overlay">solo para el APRENDIZ 2</span>
+                                                    <!-- Texto indicando "solo para el APRENDIZ 2" -->
+                                                </a>
+                                            </li>
+                                            <li class="menu__option">
+                                                <!-- Elemento de lista -->
+                                                <a class="logo">
+                                                    <!-- Enlace vacío (sin URL definida) -->
+                                                    <i class="menu__icon fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="menu__overlay">solo para el APRENDIZ 3 </span>
+                                                    <!-- Texto indicando "solo para el APRENDIZ 3" -->
+                                                </a>
+                                            </li>
+                                        
+
+                                        {% endif %}
+                                        
+                                        {% if user.userprofile.id_rol.id_rol == 2%}
+                                            <li class="menu__option">
+                                                <!-- Elemento de lista -->
+                                                <a class="logo">
+                                                    <!-- Enlace vacío (sin URL definida) -->
+                                                    <i class="menu__icon fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="menu__overlay">solo para el INSTRUCTOR  1 </span>
+                                                    <!-- Texto indicando "solo para el INSTRUCTOR  1" -->
+                                                </a>
+                                            </li>
+                                            <li class="menu__option"> 
+                                                <!-- Elemento de lista -->
+                                                <a class="logo">
+                                                    <!-- Enlace vacío (sin URL definida) -->
+                                                    <i class="menu__icon fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="menu__overlay">solo para el INSTRUCTOR  2 </span>
+                                                    <!-- Texto indicando "solo para el INSTRUCTOR  2" -->
+                                                </a>
+                                            </li>
+                                            <li class="menu__option"> 
+                                                <!-- Elemento de lista -->
+                                                <a class="logo">
+                                                    <!-- Enlace vacío (sin URL definida) -->
+                                                    <i class="menu__icon fas fa-user"></i>
+                                                    <!-- Icono de usuario -->
+                                                    <span class="menu__overlay">solo para el INSTRUCTOR  3 </span>
+                                                    <!-- Texto indicando "solo para el INSTRUCTOR  3" -->
+                                                </a>
+                                            </li>
+                                            
+                                        {% endif %}
+                                            
+                                        {% if user.userprofile.id_rol.id_rol == 3%}
+
+                                            <li class="menu__option">
+                                                <!-- Elemento de lista -->
+                                                <a class="logo" href="{% url 'coordinacion:inicio_coordinacion' %}">
+                                                    <!-- Enlace dinámico que apunta a la URL 'coordinacion:inicio_coordinacion' -->
+                                                    <i class="menu__icon fas fa-users-cog"></i> <!-- Icono de configuración de usuarios -->
+                                                
+                                                    <span class="menu__overlay">Panel de Administrador</span>
+                                                    <!-- Texto indicando "Panel de Administrador" -->
+                                                </a>
+                                            </li>
+                                            <li class="menu__option">
+                                                    <!-- Elemento de lista -->
+                                                <a class="logo" href="{% url 'coordinacion:noticias' %}">
+                                                        <!-- Enlace dinámico que apunta a la URL 'coordinacion:noticias' -->
+                                                    <i class="menu__icon fas fa-bullhorn"></i> <!-- Icono de megáfono -->
+                                                    <span class="menu__overlay">Crear Noticias Administrador </span>
+                                                        <!-- Texto indicando "Crear Noticias Administrador" -->
+                                                </a>
+                                            </li>
+                                            <li class="menu__option"> 
                                                 <!-- Otro elemento de lista -->
-                                                <a href="{% url 'coordinacion:actualizarperfil' %}">
+                                                <a class="logo" href="{% url 'coordinacion:actualizarperfil' %}">
                                                     <!-- Enlace dinámico que apunta a la URL 'coordinacion:actualizarperfil' -->
-                                                    <i class="fas fa-user-cog"></i> <!-- Icono de configuración de usuario -->
-                                                    <span class="nav-item">Actuaizar Perfil Admnistrador</span>
+                                                    <i class="menu__icon fas fa-user-cog"></i> <!-- Icono de configuración de usuario -->
+                                                    <span class="menu__overlay">Actuaizar Perfil Admnistrador</span>
                                                     <!-- Texto indicando "actuaizar perfil Admnistrador" -->
                                                 </a>
                                             </li>
-                                            <li> 
+                                            <li class="menu__option">
                                                 <!-- Otro elemento de lista -->
-                                                <a href="{% url 'coordinacion:gestiondepermisos' %}">
+                                                <a class="logo" href="{% url 'coordinacion:gestiondepermisos' %}">
                                                     <!-- Enlace dinámico que apunta a la URL 'coordinacion:actualizarperfil' -->
-                                                    <i class="fas fa-user-lock"></i> <!-- Icono de usuario con candado -->
-                                                    <span class="nav-item">Gestión De Permisos Administrador</span>
+                                                    <i class="menu__icon fas fa-user-lock"></i> <!-- Icono de usuario con candado -->
+                                                    <span class="menu__overlay">Gestión De Permisos Administrador</span>
                                                     <!-- Texto indicando "Gestión de Permisos Administrador" -->
                                                 </a>
                                             </li>
-                                            
-                                            
-                                            
-                                            
                                         {% endif %}
 
 
                                     {% else %}
-                              <!-- Comienza un elemento de lista -->
-                                        <li> 
+                                        <!-- Comienza un elemento de lista -->
+                                        <li class="menu__option"> 
                                             <!-- Define un enlace con una URL dinámica -->
-                                            <a href="{% url 'usuarios:crearsoli_usuario' %}">
+                                            <a class="logo" href="{% url 'usuarios:crearsoli_usuario' %}">
                                                 <!-- Icono de Font Awesome que representa una industria -->
-                                                <i class="fas fa-industry"></i>
+                                                <i class="menu__icon fas fa-industry"></i>
                                                 <!-- Texto que indica "seccion para empresas" -->
-                                                <span class="nav-item">Sección para Empresas</span>
+                                                <span class="menu__overlay">Sección para Empresas</span>
                                             </a>
-                                        </li> <!-- Fin del elemento de lista -->
+                                        </li> 
+                                        <!-- Fin del elemento de lista -->
 
                                     {% endif %}
 
-
-
                                     {% if request.user.is_authenticated %}
-                                    <li> 
-                                        <!-- Elemento de lista -->
-                                        <a href="">
-                                            <!-- Enlace sin destino especificado -->
-                                            <i class="fas fa-book-open"></i> <!-- Icono de libro abierto -->
-                                            <span class="nav-item"> PROGRAMAS DE FORMACION EN INGLES</span>
-                                            <!-- Texto indicando "CURSOS DE INGLES" -->
-                                        </a>
-                                    </li>
-                                    <li> 
-                                        <!-- Otro elemento de lista -->
-                                        <a href="">
-                                            <!-- Enlace sin destino especificado -->
-                                            <i class="fas fa-user"></i>
-                                            <!-- Icono de usuario -->
-                                            <span class="nav-item"> para usuarios registrados 2</span>
-                                            <!-- Texto indicando "para usuarios registrados 2" -->
-                                        </a>
-                                    </li>
-                                        <li> 
+                                        <li class="menu__option">
                                             <!-- Elemento de lista -->
-                                            <a href="">
+                                            <a class="logo">
                                                 <!-- Enlace sin destino especificado -->
-                                                <i class="fas fa-user"></i>
+                                                <i class="menu__icon fas fa-book-open"></i> <!-- Icono de libro abierto -->
+                                                <span class="menu__overlay"> PROGRAMAS DE FORMACION EN INGLES</span>
+                                                <!-- Texto indicando "CURSOS DE INGLES" -->
+                                            </a>
+                                        </li>
+                                        <li class="menu__option">
+                                            <!-- Otro elemento de lista -->
+                                            <a class="logo">
+                                                <!-- Enlace sin destino especificado -->
+                                                <i class="menu__icon fas fa-user"></i>
                                                 <!-- Icono de usuario -->
-                                                <span class="nav-item"> para usuarios registrados 3</span>
+                                                <span class="menu__overlay"> para usuarios registrados 2</span>
+                                                <!-- Texto indicando "para usuarios registrados 2" -->
+                                            </a>
+                                        </li>
+                                        <li class="menu__option"> 
+                                            <!-- Elemento de lista -->
+                                            <a class="logo" href="">
+                                                <!-- Enlace sin destino especificado -->
+                                                <i class="menu__icon fas fa-user"></i>
+                                                <!-- Icono de usuario -->
+                                                <span class="menu__overlay"> para usuarios registrados 3</span>
                                                 <!-- Texto indicando para usuarios registrados 3 -->
                                             </a>
                                         </li>
-                                        <li>
-                                            <!-- Otro elemento de lista -->
-                                            <a href="{% url 'usuarios:logout' %}" class="logout">
-                                                <!-- Enlace con URL generada por Django -->
-                                                <i class="fas fa-sing-out-alt"></i>
-                                                <!-- Icono de "cerrar sesión" -->
-                                                <span class="nav-item">boton cerrar seccion </span>
-                                                <!-- Texto indicando "botón cerrar sesión" -->
-                                            </a>
-                                        </li>
-                                        {% else %}
-                                    <li> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
-                                        <a href="#"> <!-- Define un enlace con un marcador de posición "#" -->
-                                            <i class="fas fa-graduation-cap"></i>
+                                        
+                                    {% else %}
+                                        <li class="menu__option"> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
+                                            <a class="logo" href="#"> <!-- Define un enlace con un marcador de posición "#" -->
+                                                <i class="menu__icon fas fa-graduation-cap"></i>
 
-                                            <span class="nav-item">PROGRAMAS DE FORMACION EN INGLES (GENERAL) </span> <!-- Texto del menú de navegación -->
-                                        </a> <!-- Fin del enlace -->
-                                    </li> <!-- Fin del elemento de lista -->
-                                    
-                                        <li> <!-- Comienza un nuevo elemento de lista en el menú de navegación -->
-                                            <a href="#"> <!-- Define un enlace con un marcador de posición "#" -->
-                                                <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
-                                                <span class="nav-item">sin autenticar  general 2 </span> <!-- Texto del menú de navegación -->
+                                                <span class="menu__overlay">PROGRAMAS DE FORMACION  </span> <!-- Texto del menú de navegación -->
                                             </a> <!-- Fin del enlace -->
                                         </li> <!-- Fin del elemento de lista -->
                                         
-                                        
-                                        
-                                        <li> <!-- Comienza otro elemento de lista -->
-                                            <a href="{% url 'usuarios:login_user' %}"> <!-- Define un enlace con una URL dinámica a la página de inicio de sesión -->
-                                                <i class="fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
-                                                <span class="nav-item">Iniciar Sesion</span> <!-- Texto del menú de navegación -->
+                                        <li class="menu__option"><!-- Comienza un nuevo elemento de lista en el menú de navegación -->
+                                            <a class="logo" href="#"> <!-- Define un enlace con un marcador de posición "#" -->
+                                                <i class="menu__icon fas fa-question-circle"></i> <!-- Icono de pregunta dentro del enlace -->
+                                                <span class="menu__overlay">sin autenticar  general 2 </span> <!-- Texto del menú de navegación -->
                                             </a> <!-- Fin del enlace -->
                                         </li> <!-- Fin del elemento de lista -->
+                                            
+                                            
+                                         <!-- Fin del elemento de lista -->
                                     {% endif %}
-                                </ul>
-                            </nav>
-                        </body>  
-            </aside>
+                    </ul>
+                </nav>
+            </body>  
+        </aside>
     <!--layout principal-->
     <main class="layout__content"> <!-- Define el contenido principal del diseño -->
         <section class="content__page"> <!-- Define una sección de la página -->

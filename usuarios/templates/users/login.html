@@ -4,6 +4,8 @@
 
 {% block title %}{{title}}{% endblock  %}
 {% block content %}
+
+<div class="container">
     {% if messages %}
         {% for message in messages  %}
             <div class="alert alert-warning">
@@ -13,7 +15,10 @@
     {% endif %}
     {{register_form.errors}}
     <form method="post" action="">
+        
         {% csrf_token %}
+        <input(type="radio" name="tab" id="signin" checked)/>
+        <input(type="radio" name="tab" id="register")/>
         <label for="">Numero de Identificacion</label>
         <input type="username" name="username"/>
         <br>
@@ -21,10 +26,12 @@
         <input type="password" name="password"/>
         <br>
 
-
-        <input  type="submit" name="" value="Iniciar Sesion"/>
-
+        <button>
+            <input  type="submit" name="" value="Enter"/>
+        </button>
     </form>
-    <a name="" id="" class="btn btn-primary" href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
-
+    <button>
+        <a type="radio" name="" id="" class="tab"  href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
+    
+</div>
 {% endblock %}
