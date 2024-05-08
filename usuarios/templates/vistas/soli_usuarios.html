@@ -1,5 +1,4 @@
 {% extends "layout/layout.html" %}
-
 {% block tituloventana %} {{tituloventana}} {% endblock  %}
 {% block titulo %}Solicitud{% endblock  %}
 {% block content %}
@@ -40,7 +39,6 @@
             
     {% endif %}
 
-
 </div>
 <!-- Button trigger modal -->
 
@@ -54,120 +52,123 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <label for="id_municipio">De donde Realiza su SOLICITUD ?</label><br>
-                    <div class="row mt-12">
-                        <div class="col-sm-12" >
-                            <h6 class="modal-title">Depto<h6>
-                            <select class="form-control" id="cod_dpto" name="cod_dpto"  title='' style='cursor:pointer;' >
-                                <option></option>
-                                {% for depto in depto %}
-                                    <option value="{{ depto.cod_dpto }}">{{ depto.nombre_dpto }}</option>
-                                {% endfor %}							
-                            </select>
+                <div class="formulario_solicitud">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="id_municipio">De donde Realiza su SOLICITUD ?</label><br>
+                        <div class="row mt-12">
+                            <div class="col-sm-12" >
+                                <h6 class="modal-title">Depto<h6>
+                                <select class="form-control" id="cod_dpto" name="cod_dpto"  title='' style='cursor:pointer;' >
+                                    <option></option>
+                                    {% for depto in depto %}
+                                        <option value="{{ depto.cod_dpto }}">{{ depto.nombre_dpto }}</option>
+                                    {% endfor %}							
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-12">
-                        <div class="col-sm-12">
-                            <h6 class="modal-title">Municipio</h6>
-                            <script>
-                                document.getElementById('cod_dpto').addEventListener('change', function() {
-                                    var departamento = this.value;
-                                    var municipioSelect = document.getElementById('cod_municipio');
-                                    // Limpiar opciones actuales
-                                    municipioSelect.innerHTML = '';
-                                    // Obtener opciones de municipio según el departamento seleccionado
-                                    fetch(`/get_municipios/?departamento=${departamento}`)
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            // Agregar las nuevas opciones al select
-                                            data.forEach(municipio => {
-                                                var option = document.createElement('option');
-                                                option.value = municipio.cod_municipio;
-                                                option.textContent = municipio.nombre_municipio;
-                                                municipioSelect.appendChild(option);
-                                            });
-                                        });
-                                });
-                            </script>
-                            <select class="form-control" id="cod_municipio" name="cod_municipio" title='' style='cursor:pointer;'>
-                                <option></option>
-                            </select>
-                        </div>  
-                    </div>				
-                    <div class="row mt-12">
-                        <div class="col-sm-12" >
-                            <h6 class="modal-title">Poblado<h6>
+                        <div class="row mt-12">
+                            <div class="col-sm-12">
+                                <h6 class="modal-title">Municipio</h6>
                                 <script>
-                                    document.getElementById('cod_municipio').addEventListener('change', function() {
-                                        var municipios = this.value;
-                                        var PobladoSelect = document.getElementById('cod_poblado');
+                                    document.getElementById('cod_dpto').addEventListener('change', function() {
+                                        var departamento = this.value;
+                                        var municipioSelect = document.getElementById('cod_municipio');
                                         // Limpiar opciones actuales
-                                        PobladoSelect.innerHTML = '';
+                                        municipioSelect.innerHTML = '';
                                         // Obtener opciones de municipio según el departamento seleccionado
-                                        fetch(`/get_poblados/?municipios=${municipios}`)
+                                        fetch(`/get_municipios/?departamento=${departamento}`)
                                             .then(response => response.json())
                                             .then(data => {
                                                 // Agregar las nuevas opciones al select
-                                                data.forEach(poblado => {
+                                                data.forEach(municipio => {
                                                     var option = document.createElement('option');
-                                                    option.value = poblado.cod_poblado;
-                                                    option.textContent = poblado.nombre_poblado;
-                                                    PobladoSelect.appendChild(option);
+                                                    option.value = municipio.cod_municipio;
+                                                    option.textContent = municipio.nombre_municipio;
+                                                    municipioSelect.appendChild(option);
                                                 });
                                             });
                                     });
                                 </script>
-                            <select class="form-control" id="cod_poblado" name="cod_poblado"  title='' style='cursor:pointer;' >
-                                <option></option>
-                            </select>
+                                <select class="form-control" id="cod_municipio" name="cod_municipio" title='' style='cursor:pointer;'>
+                                    <option></option>
+                                </select>
+                            </div>  
+                        </div>				
+                        <div class="row mt-12">
+                            <div class="col-sm-12" >
+                                <h6 class="modal-title">Poblado<h6>
+                                    <script>
+                                        document.getElementById('cod_municipio').addEventListener('change', function() {
+                                            var municipios = this.value;
+                                            var PobladoSelect = document.getElementById('cod_poblado');
+                                            // Limpiar opciones actuales
+                                            PobladoSelect.innerHTML = '';
+                                            // Obtener opciones de municipio según el departamento seleccionado
+                                            fetch(`/get_poblados/?municipios=${municipios}`)
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    // Agregar las nuevas opciones al select
+                                                    data.forEach(poblado => {
+                                                        var option = document.createElement('option');
+                                                        option.value = poblado.cod_poblado;
+                                                        option.textContent = poblado.nombre_poblado;
+                                                        PobladoSelect.appendChild(option);
+                                                    });
+                                                });
+                                        });
+                                    </script>
+                                <select class="form-control" id="cod_poblado" name="cod_poblado"  title='' style='cursor:pointer;' >
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>	
+                        <label >Por favor digite aqui el nombre/numero de: Barrio-Comuna y Direccion </label><br>
+                        <input type="text" name="direccion" id="direccion" class="form-control"> <br>
+                        <select name="id_doc" class="form-control" id="id_id_doc">
+                            <option value="-1">Selecciona su tipo de documento</option>
+                            {% for doc in tipodoc %}
+                                <option value="{{ doc.id_doc }}">{{ doc.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-group">
+                            {{ register_form.username.label_tag }}
+                            {{ register_form.username }}
                         </div>
-                    </div>	
-                    <label >Por favor digite aqui el nombre/numero de: Barrio-Comuna y Direccion </label><br>
-                    <input type="text" name="direccion" id="direccion" class="form-control"> <br>
-                    <select name="id_doc" class="form-control" id="id_id_doc">
-                        <option value="-1">Selecciona su tipo de documento</option>
-                        {% for doc in tipodoc %}
-                            <option value="{{ doc.id_doc }}">{{ doc.nombre }}</option>
-                        {% endfor %}
-                    </select>
-                    <div class="form-group">
-                        {{ register_form.username.label_tag }}
-                        {{ register_form.username }}
-                    </div>
-                    <div class="form-group">
-                        {{ register_form.email.label_tag }}
-                        {{ register_form.email }}
-                    </div>
-                    <div class="form-group">
-                        {{ register_form.first_name.label_tag }}
-                        {{ register_form.first_name }}
-                    </div>
-                    <div class="form-group">
-                        {{ register_form.last_name.label_tag }}
-                        {{ register_form.last_name }}
-                    </div>
-                    <div class="form-group">
-                        {{ register_form.password1.label_tag }}
-                        {{ register_form.password1 }}
-                    </div>
-                    <div class="form-group">
-                        {{ register_form.password2.label_tag }}
-                        {{ register_form.password2 }}
-                    </div>
+                        <div class="form-group">
+                            {{ register_form.email.label_tag }}
+                            {{ register_form.email }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.first_name.label_tag }}
+                            {{ register_form.first_name }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.last_name.label_tag }}
+                            {{ register_form.last_name }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.password1.label_tag }}
+                            {{ register_form.password1 }}
+                        </div>
+                        <div class="form-group">
+                            {{ register_form.password2.label_tag }}
+                            {{ register_form.password2 }}
+                        </div>
                         <label for="id_tiposolicitud"> Seleccione TIPO DE SOLICITUD</label><br>
                         <select name="id_tiposolicitud" id="id_tiposolicitud" onchange="MostrarTipo_soli()">
-                        <option></option>
-                        {% for tiposolicitud in tiposoli %}
-                            <option value="{{ tiposolicitud.id_tiposolicitud }}">{{ tiposolicitud.nombre }}</option>
-                        {% endfor %}
+                            <option></option>
+                            {% for tiposolicitud in tiposoli %}
+                                <option value="{{ tiposolicitud.id_tiposolicitud }}">{{ tiposolicitud.nombre }}</option>
+                            {% endfor %}
                         </select><br>
                         <label for="descripcion">Descripción</label><br>
                         <input type="text" name="descripcion" id="descripcion" ></input><br>
                         <div id="tipo_soli"></div>
                         <input class="btn btn-primary" type="submit" name="Enviar" value="Enviar">
+                        
                     </form>
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

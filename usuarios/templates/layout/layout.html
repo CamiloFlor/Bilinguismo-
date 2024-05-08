@@ -51,7 +51,6 @@
                         <!-- Verificación de si el usuario está autenticado -->
                         {% if user.is_authenticated %}
                             <!-- Si el usuario está autenticado, se muestra su rol -->
-                           
                             <button  class="button-86"  onclick="location.href='{% url 'usuarios:logout' %}'">
                                 <!-- Texto del botón -->
                                 <!-- Texto del botón -->
@@ -83,9 +82,15 @@
                                     <span class="menu__overlay" >Bilinguismo</span>
                                 </a>
                             </li>
-                            <button class="button-86" onclick="location.href='{% url 'usuarios:login_user' %}'">Iniciar Sección</button>
+                            <li class="menu__option">
+                                <a class="logo" href={% url 'usuarios:login_user' %}>
+                                    <i class="menu__icon fas fa-newspaper"></i> <!-- Icono de periódico -->
+                                    <!-- Texto para mostrar noticias a todos los usuarios -->
+                                    <span class="menu__overlay"> Iniciar Sesion</span>
+                                </a>
+                            </li>
+                            
                         {% endif %}
-
                         <!-- Elemento de lista con un enlace a la página de inicio de usuarios -->
                         <li class="menu__option">
                             <a class="logo" href="{% url 'inicio_usuarios' %}">
@@ -227,7 +232,7 @@
                                                 <!-- Icono de Font Awesome que representa una industria -->
                                                 <i class="menu__icon fas fa-industry"></i>
                                                 <!-- Texto que indica "seccion para empresas" -->
-                                                <span class="menu__overlay">Sección para Empresas</span>
+                                                <span class="menu__overlay">Bolsa Coorporativa</span>
                                             </a>
                                         </li> 
                                         <!-- Fin del elemento de lista -->
@@ -282,7 +287,7 @@
                                         </li> <!-- Fin del elemento de lista -->
                                             
                                             
-                                         <!-- Fin del elemento de lista -->
+                                        <!-- Fin del elemento de lista -->
                                     {% endif %}
                     </ul>
                 </nav>

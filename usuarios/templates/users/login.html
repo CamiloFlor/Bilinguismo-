@@ -14,22 +14,24 @@
         {% endfor %}
     {% endif %}
     {{register_form.errors}}
-    <form method="post" action="">
-        
-        {% csrf_token %}
-        <input(type="radio" name="tab" id="signin" checked)/>
-        <input(type="radio" name="tab" id="register")/>
-        <label for="">Numero de Identificacion</label>
-        <input type="username" name="username"/>
-        <br>
-        <label for="password">Contraseña de Usuario</label>
-        <input type="password" name="password"/>
-        <br>
+    <div class="formulario_login">
+        <form method="post" action="">
+            
+            {% csrf_token %}
+            <input(type="radio" name="tab" id="signin" checked)/>
+            <input(type="radio" name="tab" id="register")/>
+            <label for="">Numero de Identificacion</label>
+            <input type="username" name="username"/>
+            <br>
+            <label for="password">Contraseña de Usuario</label>
+            <input type="password" name="password"/>
+            <br>
 
-        <button>
-            <input  type="submit" name="" value="Enter"/>
-        </button>
-    </form>
+            <button>
+                <input  type="submit" name="" value="Enter"/>
+            </button>
+        </form>
+    </div>
     <button>
         <a type="radio" name="" id="" class="tab"  href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
     

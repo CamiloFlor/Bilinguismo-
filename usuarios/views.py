@@ -110,9 +110,11 @@ def crearsoli_usuario(request):
         # SOLICITUD
         descripcion = request.POST.get('descripcion')
         fecha_inicio_str = request.POST.get('fecha_inicio')
-        fecha_inicio_str = request.POST.get('fecha_inicio')
         archivo = request.FILES.get('archivo', None)
-        fecha_inicio = datetime.strptime(fecha_inicio_str, '%Y-%m-%d')
+        if fecha_inicio_str:
+            fecha_inicio = datetime.strptime(fecha_inicio_str, '%Y-%m-%d')
+        else:
+            fecha_inicio = None
         if register_form.is_valid() and docform.is_valid() and tiposoli.is_valid():
             #user 
             user = register_form.save()
@@ -132,7 +134,7 @@ def crearsoli_usuario(request):
             user_profile.cod_municipio = municipio
             user_profile.cod_poblado = poblado
             user_profile.save()
-            userprofile = UserProfile.objects.get(id_userprofile=user_profile) 
+            userprofile = UserProfile.objects.get(id_userprofile=user_profile.id_userprofile) 
             if userprofile.id_doc == 3:
                 userprofile.id_rol = 4
                 user_profile.save()
@@ -144,8 +146,8 @@ def crearsoli_usuario(request):
                 archivo = archivo,
             )
             detalle_soli.save()
-            #Solicitud(user)
-            soli, created = Solicitud.objects.create(
+            #Solicitud
+            soli = Solicitud.objects.create(
             user=user,
             id_detallesolicitud=detalle_soli
             )

@@ -4,21 +4,21 @@
 {{register_form.errors}}
 
 
- {{ register_form.errors }}
- 
- <form method="post" action="">
-     {% csrf_token %}
-     {% for field in register_form %}
-         <label>{{ field.label }}</label>
-         {{ field }}
-     {% endfor %} 
-     <select name="id_rol" class="form-control" id="id_id_rol">
-         <option value="">Por favor, selecciona un rol para continuar.</option>
-         {% for rol in roles %}
-             <option value="{{ rol.id_rol }}">{{ rol.nombre }}</option>
-         {% endfor %}
-     </select>
-     <button>
+{{ register_form.errors }}
+
+<form method="post" action="">
+    {% csrf_token %}
+    {% for field in register_form %}
+        <label>{{ field.label }}</label>
+        {{ field }}
+    {% endfor %} 
+    <select name="id_rol" class="form-control" id="id_id_rol">
+        <option value="">Por favor, selecciona un rol para continuar.</option>
+        {% for rol in roles %}
+            <option value="{{ rol.id_rol }}">{{ rol.nombre }}</option>
+        {% endfor %}
+    </select>
+    <button>
         <input type="submit" value="Registrarse"/>
     </button>
 </form>
