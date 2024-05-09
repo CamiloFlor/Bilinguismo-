@@ -4,6 +4,11 @@
 
 {% block title %}{{title}}{% endblock  %}
 {% block content %}
+<<<<<<< HEAD
+=======
+
+<div class="container">
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
     {% if messages %}
         {% for message in messages  %}
             <div class="alert alert-warning">
@@ -12,6 +17,7 @@
         {% endfor %}
     {% endif %}
     {{register_form.errors}}
+<<<<<<< HEAD
     <form method="post" action="">
         {% csrf_token %}
         <label for="">Numero de Identificacion</label>
@@ -23,4 +29,28 @@
     </form>
     <a name="" id="" class="btn btn-primary" href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
 
+=======
+    <div class="formulario_login">
+        <form method="post" action="">
+            
+            {% csrf_token %}
+            <input(type="radio" name="tab" id="signin" checked)/>
+            <input(type="radio" name="tab" id="register")/>
+            <label for="">Numero de Identificacion</label>
+            <input type="username" name="username"/>
+            <br>
+            <label for="password">Contraseña de Usuario</label>
+            <input type="password" name="password"/>
+            <br>
+
+            <button>
+                <input  type="submit" name="" value="Enter"/>
+            </button>
+        </form>
+    </div>
+    <button>
+        <a type="radio" name="" id="" class="tab"  href="{% url 'usuarios:registro' %}" role="button">Registrarse</a>
+    
+</div>
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 {% endblock %}

@@ -107,6 +107,7 @@ h6 {
     background: #FF6F61;
 }
 
+<<<<<<< HEAD
 button.btn {
     color: #ffffff;
     background: #000000;
@@ -120,6 +121,26 @@ button.btn:hover {
 }
 
 
+=======
+.button.btn {
+    color: white;
+    background: #228B22; /* Verde oscuro */
+    border: 2px solid #3CB371; /* Verde más oscuro */
+    padding: 12px 20px; /* Ajusta el padding para aumentar el tamaño */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Borde redondeado */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.button.btn:hover {
+    background: #32CD32; /* Verde brillante */
+    border-color: #32CD32; /* Verde brillante */
+    transform: scale(1.1); /* Aumenta el tamaño */
+}
+
+
+
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 /**********************************/
 /*********** Top Bar CSS **********/
 /**********************************/
@@ -131,7 +152,11 @@ button.btn:hover {
 .top-bar .tb-contact p {
     display: inline-block;
     margin: 0;
+<<<<<<< HEAD
     color: #FF6F61;
+=======
+    color: #6eff61;
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
     font-size: 14px;
 }
 
@@ -263,6 +288,7 @@ button.btn:hover {
 }
 
 
+<<<<<<< HEAD
 /**********************************/
 /*********** Nav Bar CSS **********/
 /**********************************/
@@ -371,6 +397,8 @@ button.btn:hover {
 .nav-bar .social a:hover i {
     color: #FF6F61;
 }
+=======
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 
 
 /**********************************/

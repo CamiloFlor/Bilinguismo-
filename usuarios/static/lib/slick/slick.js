@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
      _ _      _       _
  ___| (_) ___| | __  (_)___
@@ -14,6 +15,9 @@
   Issues: http://github.com/kenwheeler/slick/issues
 
  */
+=======
+
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 /* global window, document, define, jQuery, setInterval, clearInterval */
 ;(function(factory) {
     'use strict';

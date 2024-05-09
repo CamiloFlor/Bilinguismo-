@@ -1,5 +1,6 @@
 {% extends "layout/layout.html" %}
 
+<<<<<<< HEAD
 {% block tituloventana %} {{tituloventana}} {% endblock  %}
 {% block titulo %}NOTICIAS{% endblock  %}
 {% block content %}
@@ -10,3 +11,205 @@
 
 
 
+=======
+{% block tituloventana %} {{ tituloventana }} {% endblock %}
+{% block titulo %}NOTICIAS{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page__name">B-TEMA</h1>
+    <h2 class="page__job">Analistas y Desarrolladores SOFTWARE</h2>
+
+    <h2>Formulario de Publicación de Noticias</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="id_titulo">Título de la Noticia:</label>
+            <input type="text" id="id_titulo" name="titulo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="id_descripcion">Descripción:</label>
+            <textarea id="id_descripcion" name="descripcion" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="id_hora_publicacion">Hora de Publicación:</label>
+            <input type="time" id="id_hora_publicacion" name="hora_publicacion" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="id_fecha_mostrada">Fecha a Mostrar:</label>
+            <input type="date" id="id_fecha_mostrada" name="fecha_mostrada" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="id_imagen">Adjuntar Imagen:</label>
+            <input type="file" id="id_imagen" name="imagen" class="form-control-file">
+        </div>
+        <div class="form-group">
+            <label for="id_video">Adjuntar Video:</label>
+            <input type="file" id="id_video" name="video" class="form-control-file">
+        </div>
+        <div class="form-group">
+            <label for="id_autor">Autor:</label>
+            <input type="text" id="id_autor" name="autor" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="id_rol_autor">Rol del Autor:</label>
+            <select id="id_rol_autor" name="rol_autor" class="form-control">
+                <option value="">Seleccionar Rol del Autor</option>
+                <option value="Instructor">Instructor</option>
+                <option value="Administrador">Administrador</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Publicar Noticia</button>
+    </form>
+
+
+
+
+
+    <h2>Listado de Inscripciones</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo Electrónico</th>
+                <th>Teléfono</th>
+        </ul>
+    </body>
+
+
+
+
+
+
+
+
+
+
+    <body>
+        <h1>Inscripciones al Programa de Formación de Inglés</h1>
+        <p>
+            Bilingüismo Accede a los cursos de formación en lenguas, son gratuitos y fueron creados para la comunidad en general, para que estés conectado con las necesidades del mercado laboral.
+    
+            El Programa de Bilingüismo del SENA es la respuesta de la Entidad a los requerimientos del sector productivo en cuanto a la formación de sus futuros trabajadores en una lengua extranjera o segunda lengua, que les permita un mejor desempeño laboral, aumentando la competitividad y calidad del servicio de sus empresas en comparación con sus pares a nivel mundial.
+    
+            Accede a los cursos de formación en lenguas, son gratuitos y fueron creados para la comunidad en general, para que estés conectado con las necesidades del mercado laboral.
+    
+            Programa de lenguas SENA
+    
+            El Programa de lenguas ofrece a todos los colombianos la posibilidad de formarse en diferentes lenguas en modalidad virtual y presencial. A continuación, se brinda información sobre los programas e inscripciones:
+    
+            Formación virtual
+    
+            A través del programa de formación virtual English Does Work, el SENA ofrece una alternativa en línea cuyo objetivo principal es formar a los colombianos de todas las regiones del país en habilidades lingüísticas y comunicativas en inglés.
+    
+            English Does Work está compuesto por 13 niveles que inician en level 1 y terminan con un level 13. Dichos niveles tienen relación con el Marco Común Europeo de Referencia para las Lenguas (MCERL) y al finalizar la totalidad del Programa de Formación, es decir los 13 niveles, se espera que el aprendiz pueda desarrollar un nivel intermedio de competencia en inglés. Las inscripciones a los diferentes niveles del programa de formación se pueden realizar haciendo clic en los siguientes enlaces.
+        </p>
+    
+        <h2>Niveles de Inglés</h2>
+
+
+
+   
+        <ul>
+            <li><a href="">Inglés 1</a></li>
+            <li><a href="">Inglés 2</a></li>
+            <li><a href="">Inglés 3</a></li>
+            <li><a href="">Inglés 4</a></li>
+            <li><a href="">Inglés 5</a></li>
+            <li><a href="">Inglés 6</a></li>
+            <li><a href="">Inglés 7</a></li>
+            <li><a href="">Inglés 8</a></li>
+            <li><a href="">Inglés 9</a></li>
+        </ul>
+    </body>
+
+
+
+    <h2>Más Información</h2>
+    <p>
+        Si deseas más información sobre los contenidos de cada nivel, te invitamos a que ingreses a <a href="http://www.senavirtual.edu.co">www.senavirtual.edu.co</a>, y luego hagas clic en el menú "Inglés".
+    </p>
+    <h2>Ayuda para inscripciones</h2>
+    <h3>Formación presencial</h3>
+    <p>
+        El SENA ofrece programas de formación presencial en inglés, francés y portugués. Las inscripciones a estos cursos varían dependiendo de la disponibilidad de los Centros de Formación. Si estás interesado en acceder a uno de nuestros cursos tienes dos opciones:
+    </p>
+    <ol>
+        <li>Ingresa a Sofia Plus <a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/">http://oferta.senasofiaplus.edu.co/sofia-oferta/</a>, escoge la opción "cursos cortos presenciales" y en el buscador escribe el idioma de tu preferencia; aparecerán las opciones para este idioma, escoge la que más se acomode a tus requerimientos. En el caso de que no encontrar ninguna opción, revisa periódicamente.</li>
+        <li>Dirígete al Centro de Formación más cercano y solicita información sobre las inscripciones al Coordinador Académico o al Profesional de Bilingüismo. Para información sobre los Centros de Formación, haz clic en el siguiente enlace: <a href="http://www.sena.edu.co/es-co/regionales/Paginas/default.aspx">http://www.sena.edu.co/es-co/regionales/Paginas/default.aspx</a></li>
+    </ol>
+
+
+
+
+    
+    <h3>Recursos y estrategias de la formación en lenguas</h3>
+    <p>
+        Actualmente la Entidad dispone de herramientas y actividades que propenden por el desarrollo de un segundo idioma en modalidad presencial y virtual:
+    </p>
+    <ul>
+        <li>Prueba de inglés SEPT: La SENA English Placement Test está diseñada para el aprovechamiento de instructores, aprendices y aspirantes SENA interesados en identificar su nivel de dominio del inglés. Acceda a la prueba a través del siguiente enlace: <a href="https://www.senavirtual.edu.co">Prueba SEPT</a></li>
+        <li>Fulbright: En el marco del convenio con la comisión Fulbright, se busca fortalecer el aprendizaje y enseñanza del inglés como lengua extranjera de aprendices SENA, a través del apoyo de Asistentes Extranjeros – ETA en trece (13) Centros de Formación Profesional. Así mismo, se realizan Fulbright Lectures, que generan espacios de fortalecimiento e intercambio de conocimientos para los miembros de la Comunidad SENA con la participación de expertos de la Comunidad Fulbright.</li>
+        <li>Intercambios culturales virtuales: En alianza con Asia Pacific Virtual Exchange Association, se tiene por objetivo el fortalecimiento de las competencias escritas y lectoras en inglés de aprendices del SENA. Con esta alianza, los aprendices se comunican con pares en distintos países, mayormente de Japón, así como de China, Corea del sur, Tailandia, Brasil, España, Emiratos Árabes Unidos y Chile.</li>
+        <li>Semana Institucional de los idiomas: Esta iniciativa surge como la estrategia ideal para que la comunidad SENA se integre en el desarrollo de actividades orientadas al fortalecimiento de las competencias interculturales y lingüísticas. Cada versión que se realiza se perfila como un espacio de inclusión, diversidad e interculturalidad, a través del desarrollo de actividades culturales, académicas y lúdicas que permiten sensibilizar a la comunidad SENA con respecto a la generación de diferentes espacios y acciones de formación accesibles para todos.</li>
+    </ul>
+
+
+    <h2>Listado de Programas de Formación</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo de Formación</th>
+                <th>Modalidad de Formación</th>
+                <th>Jornada de Formación</th>
+                <th>Descripción</th>
+                <th>Requisitos</th>
+                <th>Duración del Curso</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for programa in programas %}
+            <tr>
+                <td>{{ programa.id }}</td>
+                <td>{{ programa.nombre }}</td>
+                <td>{{ programa.tipo_formacion }}</td>
+                <td>{{ programa.modalidad_formacion }}</td>
+                <td>{{ programa.jornada_formacion }}</td>
+                <td>{{ programa.descripcion }}</td>
+                <td>{{ programa.requisitos }}</td>
+                <td>{{ programa.duracion }}</td>
+                <td>
+                    <a href="" class="btn btn-info btn-sm">Detalles</a>
+                    <a href="" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<br>
+<br><br><br>
+
+    <h3>Bibliotecas</h3>
+    <p>
+        El Sistema de Bibliotecas dispone para apoyar la enseñanza y el aprendizaje de idiomas de recursos bibliográficos físicos y digitales y servicios de información presenciales y en línea que encuentras a continuación:
+    </p>
+    <ul>
+        <li>Recursos bibliográficos físicos: Las bibliotecas de los Centros de Formación y complejos, poseen títulos en papel que apoyan la formación en lenguas. Consulte el catálogo disponible en su Centro de Formación para su aprovechamiento.</li>
+        <li>Recursos bibliográficos digitales: Puedes acceder a la información con tu número de documento de identidad en usuario y contraseña, a través de <a href="https://biblioteca.sena.edu.co">https://biblioteca.sena.edu.co</a>, donde encontrarás servicios, programas culturales y recursos de información entre los que destacamos.</li>
+    </ul>
+</body>
+
+
+
+
+{% endblock %}
+
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f

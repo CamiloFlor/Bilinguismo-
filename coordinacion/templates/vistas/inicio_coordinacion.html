@@ -1,9 +1,231 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 {% extends "layout/layout.html" %}
 
 {% block tituloventana %} {{tituloventana}} {% endblock  %}
 {% block titulo %}INICIO{% endblock  %}
 {% block content %}
 
+<<<<<<< HEAD
 <h1 class="inicio__titulo"> SECCION DE NOTICIAS Coordinacion</h1>
 
 {% endblock %}
+=======
+
+<h1 class="inicio__titulo">Panel Administración</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2 class="card-title">Noticias Recientes</h2>
+                    {% for noticia in noticias %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ noticia.titulo }}</h5>
+                            <p class="card-text">{{ noticia.contenido }}</p>
+                            <p class="card-text"><strong>Categoría:</strong> {{ noticia.categoria }}</p>
+                            <p class="card-text"><strong>Autor:</strong> {{ noticia.autor }}</p>
+                            <p class="card-text"><strong>Fecha de Publicación:</strong> {{ noticia.fecha_publicacion }}</p>
+                            <p class="card-text"><small class="text-muted">Última Actualización: {{ noticia.fecha_actualizacion }}</small></p>
+                            <!-- Agrega más campos aquí según sea necesario -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <a href="{% url 'coordinacion:noticias' %}" class="btn btn-primary">Crear Noticia</a>
+                    <a href="#" class="btn btn-primary">Listar Noticias</a>
+                    <a href="#" class="btn btn-primary">Editar Noticia</a>
+                    <a href="#" class="btn btn-primary">Eliminar Noticia</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h2 class="card-title">Solicitudes Recientes</h2>
+                                        {% for solicitud in solicitudes %}
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Solicitud #{{ solicitud.id }}</h5>
+                                                <p class="card-text"><strong>Descripción:</strong> {{ solicitud.descripcion }}</p>
+                                                <p class="card-text"><strong>Estado:</strong> {{ solicitud.estado }}</p>
+                                                <p class="card-text"><strong>Autor:</strong> {{ solicitud.autor }}</p>
+                                                <p class="card-text"><strong>Fecha de Publicación:</strong> {{ solicitud.fecha_publicacion }}</p>
+                                                <p class="card-text"><strong>Fecha de Creación:</strong> {{ solicitud.fecha_creacion }}</p>
+                                                <p class="card-text"><strong>Fecha de Última Actualización:</strong> {{ solicitud.fecha_actualizacion }}</p>
+                                                <p class="card-text"><strong>Tipo de Solicitud:</strong> {{ solicitud.tipo }}</p>
+                                                <p class="card-text"><strong>Prioridad:</strong> {{ solicitud.prioridad }}</p>
+                                                <p class="card-text"><strong>Departamento:</strong> {{ solicitud.departamento }}</p>
+                                                <!-- Agrega más campos aquí según sea necesario -->
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        <a href="#" class="btn btn-primary">Crear Solicitud</a>
+                                        <a href="#" class="btn btn-primary">Listar Solicitudes</a>
+                                        <a href="#" class="btn btn-primary">Editar Solicitudes</a>
+                                        <a href="#" class="btn btn-primary">Eliminar Solicitudes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h2>Panel de Administración</h2>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Usuarios</h5>
+                                            <p class="card-text">Administra los usuarios del sistema.</p>
+                                            <a href="" class="btn btn-primary">Administrar Usuarios</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Roles</h5>
+                                            <p class="card-text">Administra los roles y permisos del sistema.</p>
+                                            <a href="" class="btn btn-primary">Administrar Roles</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Agrega más secciones de gestión según sea necesario -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <h2 class="text-center mb-4">Panel de Administración</h2>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Categorías</h5>
+                                            <p class="card-text">Administra las categorías de noticias en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Categorías</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Departamentos</h5>
+                                            <p class="card-text">Administra los departamentos en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Departamentos</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Municipios</h5>
+                                            <p class="card-text">Administra los municipios en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Municipios</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Poblados</h5>
+                                            <p class="card-text">Administra los poblados en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Poblados</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Programas de Formación</h5>
+                                            <p class="card-text">Administra los programas de formación en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Programas de Formación</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Fichas</h5>
+                                            <p class="card-text">Administra las fichas en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Fichas</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Resultados de Aprendizaje</h5>
+                                            <p class="card-text">Administra los resultados de aprendizaje en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Resultados de Aprendizaje</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de MCER</h5>
+                                            <p class="card-text">Administra el Marco Común Europeo de Referencia en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar MCER</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Modalidades</h5>
+                                            <p class="card-text">Administra las modalidades de formación en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Modalidades</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Niveles de Formación</h5>
+                                            <p class="card-text">Administra los niveles de formación en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Niveles de Formación</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Competencias</h5>
+                                            <p class="card-text">Administra las competencias en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Competencias</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Tipos de Documento</h5>
+                                            <p class="card-text">Administra los tipos de documento en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Tipos de Documento</a>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Estados X Instrucción</h5>
+                                            <p class="card-text">Administra los estados por instrucción en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Estados X Instrucción</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Gestión de Calificaciones</h5>
+                                            <p class="card-text">Administra las calificaciones en el sistema.</p>
+                                            <a href="#" class="btn btn-primary">Administrar Calificaciones</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+             
+
+
+                        
+{% endblock %}
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f

@@ -197,8 +197,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+<<<<<<< HEAD
 .slick-dots li.slick-active button:before
 {
     opacity: .75;
     color: black;
 }
+=======
+
+>>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
