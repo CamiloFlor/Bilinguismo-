@@ -1,18 +1,5 @@
-<<<<<<< HEAD
 from django.contrib import admin
-from django.urls import path, include
-from usuarios import views
-app_name = 'usuarios'
-urlpatterns=[
-    path('Login/', views.login_user, name="login_user"),
-    path('Registro/', views.registro, name="registro"),
-    path('Logout/', views.logout_user, name="logout"),
-    path('Solicitud/', views.crearsoli_usuario, name="crearsoli_usuario"),
-    path('Solicitud-eliminar/<int:id_detallesolicitud>', views.eliminartiposoli_usuario, name="eliminartiposoli_usuario"),
-]
-=======
-
-from django.contrib import admin                                                     # Importa el módulo admin de Django para registrar modelos y gestionar el panel de administración.
+from django.urls import path                                                     # Importa el módulo admin de Django para registrar modelos y gestionar el panel de administración.
 from django.urls import path, include                                                # Importa las funciones path y include del módulo urls de Django. 
 from usuarios import views                                                           # Importa las vistas definidas en la aplicación 'usuarios'.
 app_name = 'usuarios'                                                                # Establece el espacio de nombres de la aplicación como 'usuarios'.
@@ -25,5 +12,3 @@ urlpatterns = [                                                                 
     path('get_poblados/', views.get_poblados, name="poblados"),                      # Ruta para la vista que devuelve los poblados en función de una solicitud AJAX.
     path('Solicitud-eliminar/<int:id_detallesolicitud>', views.eliminartiposoli_usuario, name="eliminartiposoli_usuario"),   # Ruta para la vista de eliminación de tipos de solicitud de usuario.
 ]
-
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f

@@ -3,7 +3,7 @@ from django.core import validators
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from usuarios.models import UserProfile, Rol, TipoSolicitud, Detallesolicitud, Tipodocumento, Municipio
+from usuarios.models import UserProfile, Rol, TipoSolicitud, Detallesolicitud, Tipodocumento, Municipios
 
 class DetalleSolicitudForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):

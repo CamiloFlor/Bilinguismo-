@@ -11,7 +11,7 @@ def inicio_instructor(request):
     return render(request, 'vistas/inicio_instructor.html',{
         'tituloventana': "Inicio"
     })
-<<<<<<< HEAD
+
 def noti_instru(request):
     noticia = Noticia.objects.all()
     return render(request, 'noti/index.html', {'noti': noticia})
@@ -37,13 +37,12 @@ def eliminar_instru(request, id ):
     return redirect('noti_instru')
 
 
-=======
 def noticias(request):
     return render(request, 'vistas/noticias.html',{
         'tituloventana': "noticias"
     })
     
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
 def crearsoli_instructor(request):
     user = User.objects.all()
     detallesolicitud= Detallesolicitud.objects.all()

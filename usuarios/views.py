@@ -4,7 +4,7 @@ from usuarios.forms import RegisterForm, UserProfileForm, DetalleSolicitudForm, 
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from usuarios.models import Rol, UserProfile, Detallesolicitud, Tipodocumento, Municipio, TipoSolicitud
+from usuarios.models import Rol, UserProfile, Detallesolicitud, Tipodocumento, Municipios, TipoSolicitud
 from django.urls import reverse
 from django.contrib.auth.models import User
 
@@ -119,7 +119,7 @@ from datetime import datetime
                                                                                                                 # con el contexto que contiene el título de la ventana.
 def inicio_usuarios(request):
     return render(request, 'vistas/inicio.html', {
-        'tituloventana': "Inicio"
+        # 'tituloventana': "Inicio"
     })
                                                                                                                 # Define una vista llamada "get_municipios" que responde a las solicitudes AJAX GET.
                                                                                                                 # Filtra los municipios según el departamento proporcionado en la solicitud y los devuelve como JSON.

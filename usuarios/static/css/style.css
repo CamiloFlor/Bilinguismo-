@@ -11,78 +11,18 @@ root {
     --color-company: #A5A6A7;
     --color-background-certificate: #f5f5f5;
     --color-background-contacto: #fcfcfc;
-<<<<<<< HEAD
-=======
-
-    --primary-color: #ffff;
-    --primary-color-light: #fc7323;
-    --primary-color-extra-light: #39A900;
-    
-    --secundary-color: #745;
-    --secundary-color-dark: #000;
-    --text-light: #238276;
-    --white: #32CD32;
-    
-    --max-width: 1200px;
-
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
-}
 
 /*Estilos Generales*/
 /*estilos generales*/
 html {
-<<<<<<< HEAD
-    font-size: 10px;/*Esto se utiliza para establecer una base de tamaño de fuente en la página*/
-=======
+
     font-size: 10px;
     /*Esto se utiliza para establecer una base de tamaño de fuente en la página*/
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
 
 }
 
 /* CAMBIO HEADER */
-<<<<<<< HEAD
-.texto-esquina {
-    position: absolute;
-    top: 10px; /* distancia desde la parte superior */
-    left: 50px; /* ajusta la posición a la derecha */
-    font-size: 50px; /* tamaño de la fuente */
-    font-family: Arial, sans-serif; /* fuente del texto */
-    color: green; /* color del texto */
-}
-
-.linea-verde {
-    margin-bottom: 60px; /* Ajusta este valor según la cantidad de espacio adicional que desees */
-    border: none;
-    height: 6px; /* altura de la línea */
-    background-color: #39A200; /* color verde */
-    width: calc(100% - 30px); /* Ajusta el ancho para dejar un espacio de 10px a cada lado */
-    position: absolute;
-    top: 90px; /* Mueve la línea 50px desde la parte superior */
-    left: 10px; /* Asegura que la línea comience desde el mismo punto que el texto */
-}
-.user-info__image {
-    width: 25%;
-    background-color: var(--color-principal);
-    border: 3px solid var(--color-principal);
-    border-radius: 20rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-.user-info__image {
-    width: 25%; /* Reducción del tamaño de la imagen */
-    background-color: var(--color-principal);
-    border: 3px solid var(--color-principal);
-    border-radius: 20rem 0 0 20rem;
-    position: absolute; /* Cambiado a absolute */
-    top: 10px;
-    right: 10px; /* Ajustado para la posición superior derecha */
-    z-index: 1; /* Agregado para asegurar que la imagen esté por encima del contenido */
-}
-=======
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 
 
 
@@ -96,11 +36,7 @@ body {
 
     overflow: hidden;
 
-<<<<<<< HEAD
-    background-image: url("bili/admin1/static/img/fondo.png");
-=======
     background-image: url("../img/fondo.png");
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
     background-size: cover;
     background-repeat: no-repeat;
     background-position: -20px -120px;
@@ -131,10 +67,6 @@ body {
     background-position: center;
     /* Otros estilos según sea necesario */
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 /*estructura principal*/
 .layout {
     position: relative;
@@ -142,12 +74,10 @@ body {
     width: 90%;
     height: 80vh;
     min-height: 80vh;
-<<<<<<< HEAD
-    margin: 10vh auto 2vh; /* Ajuste del margen superior para dar más espacio debajo del header */
-=======
+
     margin: 10vh auto 2vh;
     /* Ajuste del margen superior para dar más espacio debajo del header */
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
     display: grid;
     grid-template-areas: "aside content";
     grid-template-columns: 10% 90%;
@@ -162,27 +92,21 @@ body {
     overflow-x: hidden;
     /* Otras propiedades si las hay */
 }
-<<<<<<< HEAD
-.aside__user-info {
-    
-    display: flex;
-    flex-direction: column;
-    
-=======
+
+
 
 .aside__user-info {
 
     display: flex;
     flex-direction: column;
 
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 
     min-height: 100%;
     min-width: 30rem;
 
     background-color: #39A900;
     color: var(--color-principal);
-<<<<<<< HEAD
+
 } 
 
 
@@ -198,8 +122,6 @@ body {
     position: center;
          
 }
-=======
-}
 
 
 
@@ -207,24 +129,20 @@ body {
 
 
 
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
+
 .layout__content {
     grid-area: content;
     height: 100%;
     min-height: 100%;
     background-color: var(--color-segundario);
     border-radius: 0 10rem 10rem 0;
-<<<<<<< HEAD
+
     overflow-y: auto; /* Agrega desplazamiento vertical */
-}
-.content__page{
-=======
-    overflow-y: auto;
-    /* Agrega desplazamiento vertical */
 }
 
 .content__page {
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
     min-height: 100%;
     background-color: var(--color-principal);
     border-radius: 3.2rem;
@@ -235,20 +153,12 @@ body {
     justify-content: center;
 }
 
-<<<<<<< HEAD
-.page__name{
-    font-size: 6rem;
-    margin-bottom: 1rem;
-}
-.page__job{
-=======
 .page__name {
     font-size: 6rem;
     margin-bottom: 1rem;
 }
 
 .page__job {
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
     font-size: 2.1rem;
     font-weight: lighter;
     color: var(--color-subtitle);
@@ -257,21 +167,14 @@ body {
 
 
 /*Estilos barra de navegacion*/
-<<<<<<< HEAD
 .navbar {
     background-color: #39A900;
 }
 
 /*Estilos barra de navegacion*/
-nav{
-=======
-
-
-/*Estilos barra de navegacion*/
-
 
 nav {
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
     position: absolute;
     top: 0;
     bottom: 0;
@@ -282,7 +185,6 @@ nav {
     width: 90px;
     overflow: hidden;
     transition: width 0.2s linear;
-<<<<<<< HEAD
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1) 
      ;
   }
@@ -315,7 +217,7 @@ nav {
   
   }
   .fas{
-=======
+
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 
@@ -412,46 +314,13 @@ a:hover {
 }
 
 .fas {
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
+
     position: relative;
     width: 70px;
     height: 40px;
     top: 14px;
     font-size: 20px;
     text-align: center;
-<<<<<<< HEAD
-  
-  }
-  .nav-item{
-    position: relative;
-    top: 12px;
-    margin-left: 10px;
-  }
-  a:hover{
-    background: #eee;
-  
-  }
-  nav:hover{
-    width: 280px;
-    transition: all 0.5s ease;
-  }
-  .logout{
-    position: absolute;
-    bottom: 0;
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-/*Estilos para el footer*/
-footer{
-=======
 
 }
 
@@ -546,7 +415,6 @@ footer{
 
 /*Estilos para el footer*/
 footer {
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
     width: 1250px;
     background-color: #39A900;
     border: 1px solid #333333;
@@ -558,28 +426,4 @@ footer {
     margin-bottom: 45px;
     padding-bottom: 20px;
     border-radius: 2rem;
-<<<<<<< HEAD
-    
-
-
-    
-}
-/* Estilos adicionales para la sección de noticias */
-.card {
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card-img-top {
-    height: 250px;
-    object-fit: cover;
-=======
-
-
-
-
->>>>>>> 9dbd9c1b52866ecd1ff328aa990b020db312123f
 }
